@@ -20,7 +20,7 @@ const Navbar = () => {
     { name: "FAQS", href: "#faqs" },
     { name: "CONTACT", href: "#contact" },
   ];
-
+  
   return (
     <header className="sticky top-2 z-50 w-full bg-white shadow-sm px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">

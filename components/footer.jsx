@@ -4,7 +4,7 @@ import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, Star, Moon } from 
 
 const Footer = () => {
   return (
-    <footer id="faqs" className="relative bg-gradient-to-b from-white to-blackpt-24 pb-16 overflow-hidden pt-24">
+    <footer id="contact" className="relative bg-gradient-to-b from-white to-blackpt-24 pb-16 overflow-hidden pt-24">
       {/* Paper-cut decorative elements */}
       <div className="absolute bottom-0 rotate-180 left-0 w-full overflow-hidden pointer-events-none z-0">
         <svg className="w-full h-48" viewBox="0 0 1440 320" preserveAspectRatio="none">

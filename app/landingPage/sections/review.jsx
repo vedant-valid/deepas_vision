@@ -15,11 +15,11 @@ const VideoReviewSection = () => {
   const reviews = [
     {
       id: 1,
-      name: "Sarah Johnson",
-      role: "Marketing Director",
-      company: "TechCorp",
-      videoUrl: "/videos/review/Hoteltaj-Pallavi.mp4",
-      review: "This product completely transformed our workflow and exceeded all expectations.",
+      name: "Pallavi",
+      role: "Manager",
+      company: "Taj Hotels",
+      videoUrl: "/videos/review/pallavi taj hotel.mp4",
+      review: "I didn't believe in remedies at first, but suddenly it all makes sense.",
     },
     {
       id: 2,
@@ -87,7 +87,7 @@ const VideoReviewSection = () => {
   };
 
   return (
-    <section id="bhavishya" className="bg-gradient-to-b relative from-red-50 to-red-100 py-24 px-4 relative overflow-hidden">
+    <section id="bharosa" className="bg-gradient-to-b relative from-red-50 to-red-100 py-24 px-4 relative overflow-hidden">
       <div className="absolute -top-1 left-0 w-full h-16">
         <Image src={Paper} alt="Torn Paper Top" objectFit="cover" className="w-full h-full" />
       </div>
@@ -112,7 +112,6 @@ const VideoReviewSection = () => {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Client Testimonials
           </motion.span>
           <h2 className="text-5xl font-bold text-gray-900 mb-6 tracking-tight">
             <motion.span

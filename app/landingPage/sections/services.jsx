@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Paper from "../../../public/assets/border.png";
 import Image from "next/image";
 
-const ServiceCard = ({ title, items, number, category = "The Path" }) => {
+const ServiceCard = ({ title, items, number, category }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -14,7 +14,7 @@ const ServiceCard = ({ title, items, number, category = "The Path" }) => {
                 onMouseLeave={() => setIsHovered(false)}
             >
                 <div className="absolute top-16 right-6 z-10 h-10 w-10 bg-white border border-gray-300 shadow-md flex flex-col items-center justify-center transform translate-z-40">
-                    <span className="text-xs font-bold text-maroon">{category === "The Path" ? "" : category}</span>
+                    {category && <span className="text-xs font-bold text-maroon">{category}</span>}
                     <span className="text-2xl font-black text-maroon">{number}</span>
                 </div>
 
@@ -29,14 +29,16 @@ const ServiceCard = ({ title, items, number, category = "The Path" }) => {
                             </ul>
                         </div>
                         <button className="bg-white text-maroon text-xs font-bold py-2 px-4 uppercase transform translate-z-20 transition-transform duration-500 hover:translate-z-20 hover:bg-gray-400 hover:text-white rounded-lg shadow-md">
-                            {title === "Students & Career" ? "Let's Sit" : "Let's Sit"}
+                            Let's Sit
                         </button>
                     </div>
                 </div>
             </div>
-            <div className="text-center mt-2 text-maroon font-medium">
-                {category}
-            </div>
+            {category && (
+                <div className="text-center mt-2 text-maroon font-medium">
+                    {category}
+                </div>
+            )}
         </div>
     );
 };
@@ -74,15 +76,17 @@ const ServiceCardsCollection = () => {
                 "Foreign settlements",
                 "How long should I stay in the job?"
             ]
-        },{
-          title: "Relationships & Family",
-          number: "4",
-          items: [
-              "Resolving marriage and relationship issues.",
-              "Family disputes and resolutions.",
-              "StressChildcare planning.",
-          ]
-      },
+        },
+        {
+            title: "Relationships & Family",
+            number: "4",
+            items: [
+                "Resolving marriage and relationship issues.",
+                "Family disputes and resolutions.",
+                "Stress.",
+                "Childcare planning."
+            ]
+        },
         {
             title: "Mental Health",
             number: "5",
@@ -109,66 +113,56 @@ const ServiceCardsCollection = () => {
             items: [
                 "Stock market, Land & property investments.",
                 "Knowing where to invest—stocks, land, gold, or other assets.",
-
             ]
         },
-        
-      {
-        title: "Civil Servants",
-        number: "8",
-        items: [
-            "Postings and transfer orders.",
-            "Workplace-related matters.",
-        ]
-    }
+        {
+            title: "Civil Servants",
+            number: "8",
+            items: [
+                "Postings and transfer orders.",
+                "Workplace-related matters.",
+            ]
+        }
     ];
 
     return (
         <div className="relative min-h-screen">
-        {/* Background image with overlay */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-          style={{
-            backgroundImage: "url('https://mysta.peerduck.com/wp-content/uploads/2022/01/bg-dark.png')",
-          }}
-        >
-          <div className="absolute inset-0 bg-black/91" />
-        </div>
-      
-        {/* Foreground content */}
-        <div className="relative z-10 p-8">
-          <div className="max-w-6xl mx-auto mt-8">
-            <h1 className="text-4xl md:text-5xl font-black text-center mb-2 text-white">
-              What We Cherish For You -
-            </h1>
-            <p className="text-maroon text-center mb-10">(Services)</p>
-      
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-              {serviceData.map((service, index) => (
-                <ServiceCard
-                  key={index}
-                  title={service.title}
-                  items={service.items}
-                  number={service.number}
-                />
-              ))}
+            <div className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0">
+                <div className="absolute inset-0 bg-white/91" />
             </div>
-      
-            <div className="mt-8 text-center">
-              <button className="relative inline-block px-6 py-2 font-medium text-white group">
-                <span className="absolute inset-0 w-full h-full transition duration-300 ease-out transform translate-x-1 translate-y-1 bg-gradient-to-br from-red-700 to-maroon rounded-lg group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-                <span className="absolute inset-0 w-full h-full bg-maroon rounded-lg border-2 border-white group-hover:opacity-0 transition duration-300 ease-in-out"></span>
-                <span className="relative">Contact Now!</span>
-              </button>
+
+            <div className="relative z-10 p-8">
+                <div className="max-w-6xl mx-auto mt-8">
+                    <h1 className="text-4xl md:text-5xl font-black text-center mb-2 text-#68020D">
+                        What We Cherish For You -
+                    </h1>
+                    <p className="text-maroon text-center mb-10">(Services)</p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[6rem] gap-y-[5rem] justify-items-center">
+                    {serviceData.map((service, index) => (
+                            <ServiceCard
+                                key={index}
+                                title={service.title}
+                                items={service.items}
+                                number={service.number}
+                            />
+                        ))}
+                    </div>
+
+                    <div className="mt-8 text-center">
+                        <button className="relative inline-block px-6 py-2 font-medium text-white group">
+                            <span className="absolute inset-0 w-full h-full transition duration-300 ease-out transform translate-x-1 translate-y-1 bg-gradient-to-br from-red-700 to-maroon rounded-lg group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+                            <span className="absolute inset-0 w-full h-full bg-maroon rounded-lg border-2 border-white group-hover:opacity-0 transition duration-300 ease-in-out"></span>
+                            <span className="relative">Contact Now!</span>
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      
     );
 };
 
- const styles = `
+const styles = `
   @keyframes bgShift {
     to { background-position: -100px 100px, -100px 100px; }
   }
@@ -187,11 +181,11 @@ const ServiceCardsCollection = () => {
 
   .card-bg {
     padding-top: 50px;
-    background: linear-gradient(135deg, #0000 18.75%, #f3f3f3 0 31.25%, #0000 0),
-      repeating-linear-gradient(45deg, #f3f3f3 -6.25% 6.25%, #ffffff 0 18.75%);
+    background: linear-gradient(135deg, #0000 18.75%,rgb(255, 255, 255) 0 31.25%, #0000 0),
+      repeating-linear-gradient(45deg,rgb(255, 255, 255) -6.25% 6.25%, #ffffff 0 18.75%);
     background-size: 60px 60px;
     background-position: 0 0, 0 0;
-    background-color: #f0f0f0;
+    background-color:rgb(255, 255, 255);
     box-shadow: rgba(142, 142, 142, 0.3) 0px 30px 30px -10px;
   }
 
@@ -228,13 +222,12 @@ const ServiceCardsCollection = () => {
   }
 
   .border-3 {
-    border-width: 3px;
+    border-width: 0px;
   }
 `;
 
 const ServiceCards = () => {
     return (
-
         <div className='relative '>
             <div className="absolute z-99 -top-1 left-0 w-full h-16">
                 <Image

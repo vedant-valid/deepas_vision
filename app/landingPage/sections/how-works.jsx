@@ -91,19 +91,19 @@ export default function StickyLayout() {
                         </motion.div>
 
                         <motion.div style={{ y: subtitleY }} className="space-y-6">
-                            <div className="text-left space-y-4 animate-in opacity-0">
-                                <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                                    With years of experience in <span className="font-semibold text-red-700">वैदिक Astrology</span>, <span className="font-semibold text-red-700">Numerology</span>, and <span className="font-semibold text-red-700">Lal Kitab</span>, Deepa’s Vision offer <span className="font-semibold">कर्मिक उपाय</span> and guide you toward the right <span className="font-semibold">करियर</span> and <span className="font-semibold">जीवन मार्ग</span> — not through <span className="font-semibold">भय</span>, but with clarity and meaningful solutions to enrich your <span className="font-semibold">जीवन</span>.
-                                </p>
+  <div className="text-left space-y-4 animate-in opacity-0">
+    <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
+      With years of experience in <span className="font-semibold text-red-700">वैदिक Astrology</span>, <span className="font-semibold text-red-700">Numerology</span>, and <span className="font-semibold text-red-700">Lal Kitab</span>, Deepa’s Vision offer <span className="font-semibold">कर्मिक उपाय</span> and guide you toward the right <span className="font-semibold">करियर</span> and <span className="font-semibold">जीवन मार्ग</span> — not through <span className="font-semibold">भय</span>, but with clarity and meaningful solutions to enrich your <span className="font-semibold">जीवन</span>.
+    </p>
 
-                                <div className="bg-red-50 border-l-4 border-red-600 p-4 rounded-r">
-                                    <p className="text-red-900 font-medium italic">
-                                        "Simply we will tell you → What you can do better than others, हाउ you can outsmart the race & Troubles"
-                                    </p>
-                                </div>
-                            </div>
+    <div className="bg-red-50 border-l-4 border-red-600 p-4 rounded-r">
+      <p className="text-red-900 font-bold italic text-base md:text-lg">
+        "Simply we will tell you → What you can do better than others, हाउ you can outsmart the race & Troubles"
+      </p>
+    </div>
+  </div>
 
-                            <button className="bg-gradient-to-r from-red-800 to-red-600 hover:from-red-700 hover:to-red-500 text-white px-6 py-3 md:px-8 md:py-3 rounded-lg font-medium shadow-md animate-in opacity-0 transition-all duration-300">
+                            <button className="bg-gradient-to-r from-red-800 to-red-800 hover:from-red-700 hover:to-red-700 text-white px-6 py-3 md:px-8 md:py-3 rounded-lg font-medium shadow-md animate-in opacity-0 transition-all duration-300">
                                 Discover Now
                             </button>
                         </motion.div>

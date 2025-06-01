@@ -113,7 +113,9 @@ export default function GuidedStatsUI() {
         
       </div> 
       <div className={`transition-all duration-1000 ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-        <h1 className="text-5xl font-bold mb-12 text-center mt-10">So Far We've Guided...</h1>
+      <h1 className="text-5xl font-bold mb-12 text-center mt-10 text-red-800">
+  So Far We've Guided...
+</h1>
         
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
           <div className={`transition-all duration-1000 delay-100 ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
