@@ -23,10 +23,10 @@ const VideoReviewSection = () => {
     },
     {
       id: 2,
-      name: "Michael Chen",
-      role: "Product Manager",
-      company: "InnovateLab",
-      videoUrl: "/videos/review/review1.mp4",
+      name: "Riya Gandhi",
+      role: "Psychology student",
+      company: "College",
+      videoUrl: "/videos/review/riya.mp4",
       review: "Outstanding quality and professional service. Highly recommend to everyone.",
     },
     {
