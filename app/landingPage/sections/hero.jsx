@@ -142,7 +142,7 @@ export default function DeepasVisionWebsite() {
                 </main>
             </div>
 
-            {/* Testimonials Section */}
+            {/* the original videos  */}
 <div className="mt-20 px-4 max-w-7xl mx-auto">
   <h3 className="text-4xl font-bold text-center text-red-800 mb-10">What people say-</h3>
   
