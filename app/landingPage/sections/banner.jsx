@@ -61,7 +61,7 @@ const CelestialBanner = () => {
           </div>
           
            <div className="absolute top-10 left-12 text-yellow-400 transform rotate-12">
-            <span className="text-lg">✦</span>
+            <span className="text-lg"></span>
           </div>
           <div className="absolute bottom-20 left-20 text-yellow-400 transform -rotate-12">
             <span className="text-sm">✧</span>
