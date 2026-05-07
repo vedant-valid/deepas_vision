@@ -42,11 +42,11 @@ export function calculate(input: BirthInput): KundliData {
   const jd = swisseph.swe_julday(year, month, day, hourUt, swisseph.SE_GREG_CAL)
 
   // Ascendant via Whole Sign ('W') house system
-  // swe_houses returns { house: number[], ascendant: number }
-  // house[] is 0-indexed: house[0] = first house cusp, house[1] = second, etc.
+  // swe_houses returns the TROPICAL ascendant — must subtract Lahiri ayanamsa to get sidereal
   const housesResult = swisseph.swe_houses(jd, input.latitude, input.longitude, 'W')
   if ('error' in housesResult) throw new Error(String((housesResult as any).error))
-  const ascLon = ((housesResult.ascendant % 360) + 360) % 360
+  const ayanamsa = swisseph.swe_get_ayanamsa_ut(jd)
+  const ascLon = ((housesResult.ascendant - ayanamsa) % 360 + 360) % 360
   const lagnaSignIdx = Math.floor(ascLon / 30)
   const lagnaSign = SIGNS[lagnaSignIdx]
   const { nakshatra: lagnaNak, pada: lagnaPada } = getNakshatra(ascLon)
