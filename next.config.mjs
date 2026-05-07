@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  serverExternalPackages: ['swisseph'],
+}
 
-export default nextConfig;
+export default nextConfig

@@ -11,5 +11,6 @@ export async function GET(req: NextRequest) {
     await supabase.auth.exchangeCodeForSession(code)
   }
 
-  return NextResponse.redirect(new URL(next, req.url))
+  const safeNext = next.startsWith('/') && !next.startsWith('//') ? next : '/kundli'
+  return NextResponse.redirect(new URL(safeNext, req.url))
 }

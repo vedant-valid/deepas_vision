@@ -19,7 +19,8 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const geo = await geocodePlace(place)
+    const sanitizedPlace = place.trim().slice(0, 200)
+    const geo = await geocodePlace(sanitizedPlace)
 
     const kundliData = calculate({
       date: dob,

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useCompletion } from 'ai/react'
+import { useCompletion } from '@ai-sdk/react'
 import type { InterpretationTopic } from '@/lib/astro/types'
 
 const TOPICS: { id: InterpretationTopic; label: string }[] = [
@@ -16,14 +16,25 @@ type Props = { chartId: string; isAuthenticated: boolean }
 
 export default function InterpretationPanel({ chartId, isAuthenticated }: Props) {
   const [activeTopic, setActiveTopic] = useState<InterpretationTopic>('lagna')
+  const [topicResults, setTopicResults] = useState<Partial<Record<InterpretationTopic, string>>>({})
 
-  const { completion, complete, isLoading, error } = useCompletion({
+  const { completion, complete, isLoading, error, setCompletion } = useCompletion({
     api: '/api/kundli/interpret',
+    onFinish: (_prompt, completion) => {
+      setTopicResults(prev => ({ ...prev, [activeTopic]: completion }))
+    },
   })
+
+  function handleTopicChange(topic: InterpretationTopic) {
+    setActiveTopic(topic)
+    setCompletion(topicResults[topic] ?? '')
+  }
 
   function handleGenerate() {
     complete('', { body: { chartId, topic: activeTopic } })
   }
+
+  const displayText = completion || topicResults[activeTopic] || ''
 
   return (
     <div className="flex flex-col gap-3">
@@ -31,7 +42,7 @@ export default function InterpretationPanel({ chartId, isAuthenticated }: Props)
         {TOPICS.map(t => (
           <button
             key={t.id}
-            onClick={() => setActiveTopic(t.id)}
+            onClick={() => handleTopicChange(t.id)}
             className={`px-3 py-1 rounded-full text-xs transition-colors ${
               activeTopic === t.id
                 ? 'bg-[#68020d] text-white'
@@ -39,6 +50,7 @@ export default function InterpretationPanel({ chartId, isAuthenticated }: Props)
             }`}
           >
             {t.label}
+            {topicResults[t.id] ? ' ✓' : ''}
           </button>
         ))}
       </div>
@@ -48,8 +60,8 @@ export default function InterpretationPanel({ chartId, isAuthenticated }: Props)
           <p className="text-sm text-gray-400 italic">
             Sign in to generate AI interpretations for your chart.
           </p>
-        ) : completion ? (
-          <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">{completion}</p>
+        ) : displayText ? (
+          <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">{displayText}</p>
         ) : (
           <p className="text-sm text-gray-400 italic">
             Click Generate to receive an interpretation for <strong>{activeTopic}</strong>.

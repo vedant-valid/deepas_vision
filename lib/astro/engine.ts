@@ -1,6 +1,10 @@
 // Only import on server side — swisseph is a native Node.js addon
 // @ts-ignore — swisseph has no TypeScript types
 import swisseph from 'swisseph'
+
+type SweCalcResult = { longitude: number; latitude: number; distance: number; longitudeSpeed: number; latitudeSpeed: number; distanceSpeed: number; rflag: number }
+type SweCalcError = { error: string }
+type SweCalcRaw = SweCalcResult | { rectAscension: number; declination: number; distance: number; rectAscensionSpeed: number; declinationSpeed: number; distanceSpeed: number; rflag: number } | { x: number; y: number; z: number; dx: number; dy: number; dz: number; rflag: number } | SweCalcError
 import { fromZonedTime } from 'date-fns-tz'
 import type { BirthInput, KundliData, LagnaData, PlanetData, HouseData } from './types'
 import { SIGNS, signFromLongitude, degreeWithinSign, signIndex } from './constants/signs'
@@ -41,6 +45,7 @@ export function calculate(input: BirthInput): KundliData {
   // swe_houses returns { house: number[], ascendant: number }
   // house[] is 0-indexed: house[0] = first house cusp, house[1] = second, etc.
   const housesResult = swisseph.swe_houses(jd, input.latitude, input.longitude, 'W')
+  if ('error' in housesResult) throw new Error(String((housesResult as any).error))
   const ascLon = ((housesResult.ascendant % 360) + 360) % 360
   const lagnaSignIdx = Math.floor(ascLon / 30)
   const lagnaSign = SIGNS[lagnaSignIdx]
@@ -65,12 +70,14 @@ export function calculate(input: BirthInput): KundliData {
   const planets: PlanetData[] = []
 
   for (const def of PLANET_DEFS) {
-    const res = swisseph.swe_calc_ut(jd, def.id, SIDEREAL_FLAG)
-    const lon = ((res.longitude % 360) + 360) % 360
+    const res = swisseph.swe_calc_ut(jd, def.id, SIDEREAL_FLAG) as SweCalcRaw
+    if ('error' in res) throw new Error(String((res as SweCalcError).error))
+    const calcRes = res as SweCalcResult
+    const lon = ((calcRes.longitude % 360) + 360) % 360
     const sign = signFromLongitude(lon)
     const degree = degreeWithinSign(lon)
     const { nakshatra, pada } = getNakshatra(lon)
-    const retrograde = def.name === 'Rahu' ? true : (res.longitudeSpeed < 0)
+    const retrograde = def.name === 'Rahu' ? true : (calcRes.longitudeSpeed < 0)
     const house = ((signIndex(sign) - lagnaSignIdx + 12) % 12) + 1
     const dignity = getDignity(def.name, sign)
 
@@ -78,8 +85,10 @@ export function calculate(input: BirthInput): KundliData {
   }
 
   // Ketu is always exactly opposite Rahu
-  const rahuRes = swisseph.swe_calc_ut(jd, swisseph.SE_MEAN_NODE, SIDEREAL_FLAG)
-  const rahuRawLon = ((rahuRes.longitude % 360) + 360) % 360
+  const rahuRes = swisseph.swe_calc_ut(jd, swisseph.SE_MEAN_NODE, SIDEREAL_FLAG) as SweCalcRaw
+  if ('error' in rahuRes) throw new Error(String((rahuRes as SweCalcError).error))
+  const rahuCalc = rahuRes as SweCalcResult
+  const rahuRawLon = ((rahuCalc.longitude % 360) + 360) % 360
   const ketuLon = (rahuRawLon + 180) % 360
   const ketuSign = signFromLongitude(ketuLon)
   const ketuDegree = degreeWithinSign(ketuLon)

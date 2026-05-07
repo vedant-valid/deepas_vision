@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.75",
+    "@ai-sdk/react": "^3.0.177",
     "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.105.3",
     "ai": "^6.0.175",
@@ -20,7 +21,7 @@
     "lucide-react": "^0.511.0",
     "next": "15.3.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react-dom": "^19.2.6",
     "react-icons": "^5.5.0",
     "react-parallax-tilt": "^1.7.295",
     "swisseph": "^0.5.17"

@@ -46,17 +46,11 @@ export async function POST(req: NextRequest) {
     const encoder = new TextEncoder()
     const stream = new ReadableStream({
       start(controller) {
-        controller.enqueue(encoder.encode(`0:${JSON.stringify(cached.content)}\n`))
-        controller.enqueue(encoder.encode(`d:{"finishReason":"stop","usage":{"promptTokens":0,"completionTokens":0}}\n`))
+        controller.enqueue(encoder.encode(cached.content))
         controller.close()
       },
     })
-    return new Response(stream, {
-      headers: {
-        'Content-Type': 'text/plain; charset=utf-8',
-        'x-vercel-ai-data-stream': 'v1',
-      },
-    })
+    return new Response(stream, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } })
   }
 
   const kundliData = chart.kundli_data as KundliData
@@ -74,5 +68,5 @@ export async function POST(req: NextRequest) {
     },
   })
 
-  return result.toDataStreamResponse()
+  return result.toTextStreamResponse()
 }
