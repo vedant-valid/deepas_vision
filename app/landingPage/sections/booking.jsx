@@ -1,13 +1,6 @@
 "use client";
 import { useEffect } from "react";
 
-const orbStyle = (extra) => ({
-  position: "absolute",
-  borderRadius: "50%",
-  pointerEvents: "none",
-  ...extra,
-});
-
 const Booking = () => {
   useEffect(() => {
     const script = document.createElement("script");
@@ -20,55 +13,67 @@ const Booking = () => {
   return (
     <>
       <style>{`
-        @keyframes orbFloat1 {
-          0%,100% { transform: translate(0,0) scale(1); }
-          33%      { transform: translate(30px,-40px) scale(1.1); }
-          66%      { transform: translate(-20px,20px) scale(0.95); }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
-        @keyframes orbFloat2 {
-          0%,100% { transform: translate(0,0) scale(1); }
-          33%      { transform: translate(-40px,30px) scale(1.05); }
-          66%      { transform: translate(25px,-25px) scale(1.1); }
+        @keyframes expandLine {
+          from { width: 0; }
+          to   { width: 80px; }
         }
-        @keyframes orbFloat3 {
-          0%,100% { transform: translate(0,0) scale(1); }
-          50%      { transform: translate(20px,40px) scale(1.08); }
+        @keyframes orbDrift1 {
+          0%,100% { transform: translate(0,0); }
+          50%     { transform: translate(40px,-50px); }
         }
-        @keyframes slideInLeft  { from { opacity:0; transform:translateX(-50px); } to { opacity:1; transform:translateX(0); } }
-        @keyframes slideInRight { from { opacity:0; transform:translateX(50px);  } to { opacity:1; transform:translateX(0); } }
-        .lets-anim { animation: slideInLeft  1s ease forwards; }
-        .talk-anim { animation: slideInRight 1s ease 0.35s forwards; opacity: 0; }
+        @keyframes orbDrift2 {
+          0%,100% { transform: translate(0,0); }
+          50%     { transform: translate(-35px,45px); }
+        }
+        .booking-heading { animation: fadeUp 0.9s ease forwards; }
+        .booking-sub     { animation: fadeUp 0.9s ease 0.2s forwards; opacity: 0; }
+        .booking-line    { animation: expandLine 1s ease 0.4s forwards; width: 0; }
       `}</style>
 
-      <section id="contact" className="relative w-full bg-white overflow-hidden">
+      <section id="contact" className="relative w-full bg-[#fffaf5] overflow-hidden py-20">
 
-        {/* Animated glowing orbs */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
-          <div style={orbStyle({ top: "5%",  left: "5%",   width: 300, height: 300, background: "radial-gradient(circle, rgba(156,32,32,0.10) 0%, transparent 70%)", animation: "orbFloat1 8s ease-in-out infinite" })} />
-          <div style={orbStyle({ bottom: "5%", right: "5%", width: 260, height: 260, background: "radial-gradient(circle, rgba(156,32,32,0.09) 0%, transparent 70%)", animation: "orbFloat2 10s ease-in-out infinite" })} />
-          <div style={orbStyle({ top: "40%", right: "20%", width: 180, height: 180, background: "radial-gradient(circle, rgba(156,32,32,0.06) 0%, transparent 70%)", animation: "orbFloat3 6s ease-in-out infinite" })} />
-          <div style={orbStyle({ bottom: "20%", left: "25%", width: 140, height: 140, background: "radial-gradient(circle, rgba(156,32,32,0.07) 0%, transparent 70%)", animation: "orbFloat1 7s ease-in-out 2s infinite" })} />
+        {/* Background orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div style={{
+            position: "absolute", top: "10%", left: "5%",
+            width: 350, height: 350, borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(156,32,32,0.08) 0%, transparent 70%)",
+            animation: "orbDrift1 10s ease-in-out infinite",
+          }} />
+          <div style={{
+            position: "absolute", bottom: "5%", right: "5%",
+            width: 280, height: 280, borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(156,32,32,0.07) 0%, transparent 70%)",
+            animation: "orbDrift2 12s ease-in-out infinite",
+          }} />
         </div>
 
         {/* Heading */}
-        <div className="relative flex items-baseline justify-between px-10 md:px-20 pt-16 pb-6" style={{ zIndex: 1 }}>
-          <h2 className="lets-anim text-5xl md:text-[7vw] font-bold text-red-800 leading-none">
-            Let&apos;s
+        <div className="relative text-center mb-10 z-10">
+          <p className="booking-sub text-sm uppercase tracking-[4px] text-red-800/50 mb-3">
+            Book a Session
+          </p>
+          <h2 className="booking-heading text-5xl md:text-6xl font-bold text-red-800">
+            Let&apos;s Talk.
           </h2>
-          <p className="talk-anim text-5xl md:text-[7vw] font-bold text-red-800 leading-none">
-            Talk.
+          <div className="flex justify-center mt-4">
+            <div className="booking-line h-[3px] rounded-full bg-gradient-to-r from-red-800/30 via-red-800 to-red-800/30" />
+          </div>
+          <p className="booking-sub mt-4 text-gray-500 text-sm max-w-md mx-auto">
+            Choose a time that works for you — a calm, focused conversation to find your path.
           </p>
         </div>
 
-        {/* Divider line */}
-        <div className="relative mx-10 md:mx-20 h-px bg-gradient-to-r from-transparent via-red-300 to-transparent" style={{ zIndex: 1 }} />
-
         {/* TidyCal Widget */}
-        <div className="relative w-full px-4 md:px-10 py-8" style={{ zIndex: 2 }}>
+        <div className="relative z-10 w-full max-w-3xl mx-auto px-4">
           <div
-            className="tidycal-embed mx-auto"
+            className="tidycal-embed"
             data-path="vedantwork6"
-            style={{ minWidth: "320px", maxWidth: "900px" }}
+            style={{ minWidth: "320px" }}
           />
         </div>
       </section>
