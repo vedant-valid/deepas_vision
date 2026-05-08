@@ -1,126 +1,191 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
+const menuItems = [
+  { name: "Home",     href: "#home"     },
+  { name: "About",    href: "#about"    },
+  { name: "Services", href: "#samadhan" },
+  { name: "Kundli",   href: "/kundli"   },
+  { name: "FAQs",     href: "#faqs"     },
+  { name: "Contact",  href: "#contact"  },
+];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hovered, setHovered] = useState(null);
   const pathname = usePathname();
   const router = useRouter();
 
-  const menuItems = [
-    { name: "HOME",     href: "#home"     },
-    { name: "ABOUT",    href: "#about"    },
-    { name: "SERVICES", href: "#samadhan" },
-    { name: "KUNDLI",   href: "/kundli"   },
-    { name: "FAQS",     href: "#faqs"     },
-    { name: "CONTACT",  href: "#contact"  },
-  ];
-  
+  function handleNav(item) {
+    setIsOpen(false);
+    if (item.name === "Home") {
+      if (pathname !== "/") router.push("/");
+      else document.querySelector("#home")?.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
   return (
-    <header className="sticky top-2 z-50 w-full bg-white shadow-sm px-6 py-4">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <motion.div
-          className="flex items-center gap-2.5"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+    <header className="sticky top-3 z-50 w-full px-4">
+      {/* Glass pill */}
+      <div
+        className="max-w-5xl mx-auto flex items-center justify-between gap-4 px-4 py-2.5 rounded-2xl"
+        style={{
+          background: "rgba(255,250,245,0.72)",
+          backdropFilter: "blur(18px)",
+          WebkitBackdropFilter: "blur(18px)",
+          border: "1px solid rgba(104,2,13,0.12)",
+          boxShadow: "0 4px 24px rgba(104,2,13,0.08), 0 1px 0 rgba(255,255,255,0.6) inset",
+        }}
+      >
+        {/* Logo + Brand */}
+        <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
           <Image
             src="/assets/logo.png"
             alt="Deepa's Vision"
-            width={40}
-            height={40}
+            width={36}
+            height={36}
             className="rounded-full object-cover"
           />
-          <h1
-            className="text-xl md:text-2xl text-amber-900 tracking-wide"
-            style={{ fontFamily: 'var(--font-playfair)' }}
+          <span
+            className="text-base md:text-lg text-[#68020d] font-bold tracking-wide leading-none"
+            style={{ fontFamily: "var(--font-playfair)" }}
           >
             Deepa&apos;s Vision
-          </h1>
-        </motion.div>
+          </span>
+        </Link>
 
-        {/* Hamburger (mobile) */}
-        <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-red-900">
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
+        {/* Desktop nav links */}
+        <nav className="hidden md:flex items-center gap-1">
+          {menuItems.map((item) => {
+            const isActive = item.href.startsWith("/")
+              ? pathname === item.href
+              : false;
 
-        {/* Nav Menu */}
-        <nav
-          className={`absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent z-40 transition-all duration-300 ease-in-out ${
-            isOpen ? "block" : "hidden"
-          } md:flex`}
-        >
-          <ul className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 p-4 md:p-0 text-red-900 font-medium">
-            {menuItems.map((item, index) => (
-              <motion.li
-                key={index}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="relative group"
+            const inner = item.name === "Home" ? (
+              <button
+                onClick={() => handleNav(item)}
+                className="relative px-4 py-1.5 text-sm font-medium rounded-xl transition-colors duration-200 outline-none"
+                style={{ color: isActive || hovered === item.name ? "#fff" : "#68020d" }}
               >
-                {item.external ? (
+                {item.name}
+              </button>
+            ) : item.href.startsWith("/") ? (
+              <Link
+                href={item.href}
+                className="relative px-4 py-1.5 text-sm font-medium rounded-xl transition-colors duration-200 block"
+                style={{ color: isActive || hovered === item.name ? "#fff" : "#68020d" }}
+              >
+                {item.name}
+              </Link>
+            ) : (
+              <a
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="relative px-4 py-1.5 text-sm font-medium rounded-xl transition-colors duration-200 block"
+                style={{ color: hovered === item.name ? "#fff" : "#68020d" }}
+              >
+                {item.name}
+              </a>
+            );
+
+            return (
+              <div
+                key={item.name}
+                className="relative"
+                onMouseEnter={() => setHovered(item.name)}
+                onMouseLeave={() => setHovered(null)}
+              >
+                {(hovered === item.name || isActive) && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-xl"
+                    style={{ background: "linear-gradient(135deg, #68020d, #9c2020)" }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{inner}</span>
+              </div>
+            );
+          })}
+        </nav>
+
+        {/* CTA */}
+        <motion.a
+          href="#contact"
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.97 }}
+          className="hidden md:inline-flex items-center text-sm font-semibold px-4 py-2 rounded-xl text-white flex-shrink-0 transition-all duration-200"
+          style={{ background: "linear-gradient(135deg, #68020d, #9c2020)" }}
+        >
+          Let&apos;s Sit
+        </motion.a>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-[#68020d] p-1"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          className="md:hidden max-w-5xl mx-auto mt-2 rounded-2xl overflow-hidden"
+          style={{
+            background: "rgba(255,250,245,0.95)",
+            backdropFilter: "blur(18px)",
+            border: "1px solid rgba(104,2,13,0.12)",
+            boxShadow: "0 8px 24px rgba(104,2,13,0.10)",
+          }}
+        >
+          <ul className="flex flex-col p-3 gap-1">
+            {menuItems.map((item) => (
+              <li key={item.name}>
+                {item.href.startsWith("/") ? (
                   <Link
                     href={item.href}
-                    className="relative z-10"
                     onClick={() => setIsOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ) : item.name === "HOME" ? (
-                  <button
-                    onClick={() => {
-                      setIsOpen(false);
-                      if (pathname !== "/") {
-                        router.push("/");
-                      } else {
-                        document
-                          .querySelector("#home")
-                          ?.scrollIntoView({ behavior: "smooth" });
-                      }
-                    }}
-                    className="relative z-10 bg-transparent text-left"
-                  >
-                    {item.name}
-                  </button>
-                ) : item.href.startsWith("/") ? (
-                  <Link
-                    href={item.href}
-                    className="relative z-10"
-                    onClick={() => setIsOpen(false)}
+                    className="block px-4 py-2.5 rounded-xl text-sm font-medium text-[#68020d] hover:bg-[#68020d] hover:text-white transition-all duration-200"
                   >
                     {item.name}
                   </Link>
                 ) : (
                   <a
                     href={item.href}
-                    className="relative z-10"
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => { setIsOpen(false); handleNav(item); }}
+                    className="block px-4 py-2.5 rounded-xl text-sm font-medium text-[#68020d] hover:bg-[#68020d] hover:text-white transition-all duration-200"
                   >
                     {item.name}
                   </a>
                 )}
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-900 transition-all duration-300 group-hover:w-full"></span>
-              </motion.li>
+              </li>
             ))}
+            <li className="mt-1">
+              <a
+                href="#contact"
+                onClick={() => setIsOpen(false)}
+                className="block px-4 py-2.5 rounded-xl text-sm font-semibold text-white text-center"
+                style={{ background: "linear-gradient(135deg, #68020d, #9c2020)" }}
+              >
+                Let&apos;s Sit
+              </a>
+            </li>
           </ul>
-        </nav>
-
-        {/* CTA Button */}
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          className="hidden md:block bg-white text-red-900 px-5 py-2 border border-red-900 rounded-md text-sm hover:bg-red-50 transition"
-        >
-          Let's Sit
-        </motion.button>
-      </div>
+        </motion.div>
+      )}
     </header>
   );
 };
