@@ -1,6 +1,7 @@
 "use client"
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Youtube, Mail, Phone } from "lucide-react";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { name: "Home",         href: "#home"     },
@@ -35,16 +36,25 @@ const Footer = () => {
 
         {/* Brand row */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10 pb-8 border-b border-amber-900/20">
-          <div>
-            <h2
-              className="text-2xl font-bold text-amber-400 tracking-wide mb-1"
-              style={{ fontFamily: "var(--font-cinzel)" }}
-            >
-              Deepa&apos;s Vision
-            </h2>
-            <p className="text-amber-700/50 text-xs tracking-[3px] uppercase">
-              ज्योतिष &nbsp;•&nbsp; नक्षत्र &nbsp;•&nbsp; कर्म
-            </p>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/assets/logo.png"
+              alt="Deepa's Vision"
+              width={48}
+              height={48}
+              className="rounded-full object-cover opacity-90"
+            />
+            <div>
+              <h2
+                className="text-2xl font-bold text-amber-400 tracking-wide mb-0.5"
+                style={{ fontFamily: "var(--font-cinzel)" }}
+              >
+                Deepa&apos;s Vision
+              </h2>
+              <p className="text-amber-700/50 text-xs tracking-[3px] uppercase">
+                ज्योतिष &nbsp;•&nbsp; नक्षत्र &nbsp;•&nbsp; कर्म
+              </p>
+            </div>
           </div>
 
           {/* Social icons */}

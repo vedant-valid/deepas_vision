@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
 const Navbar = () => {
@@ -23,15 +24,26 @@ const Navbar = () => {
     <header className="sticky top-2 z-50 w-full bg-white shadow-sm px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <motion.h1
-          className="text-xl md:text-2xl text-amber-900 tracking-wide"
-          style={{ fontFamily: 'var(--font-cinzel)' }}
+        <motion.div
+          className="flex items-center gap-2.5"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Deepa&apos;s Vision
-        </motion.h1>
+          <Image
+            src="/assets/logo.png"
+            alt="Deepa's Vision"
+            width={40}
+            height={40}
+            className="rounded-full object-cover"
+          />
+          <h1
+            className="text-xl md:text-2xl text-amber-900 tracking-wide"
+            style={{ fontFamily: 'var(--font-cinzel)' }}
+          >
+            Deepa&apos;s Vision
+          </h1>
+        </motion.div>
 
         {/* Hamburger (mobile) */}
         <div className="md:hidden">
