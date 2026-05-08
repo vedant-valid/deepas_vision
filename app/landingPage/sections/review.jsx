@@ -8,7 +8,7 @@ const TESTIMONIALS = [
     name: "Pallavi",
     role: "Manager, Taj Hotels",
     initial: "P",
-    text: "I was completely lost about my career direction. After my session with Deepa ji, everything became so clear. She explained my chart in a way no one ever had — it felt like she was reading my life. I didn't believe in remedies before, but now I truly do. Grateful from the bottom of my heart. 🙏",
+    text: "I was completely lost about my career direction. After my session with Deepa ji, everything became so clear. She explained my chart in a way no one ever had. It felt like she was reading my life. I didn't believe in remedies before, but now I truly do. Grateful from the bottom of my heart.",
   },
   {
     name: "Riya Gandhi",
@@ -20,19 +20,19 @@ const TESTIMONIALS = [
     name: "Ram Bhardwaj",
     role: "Business Owner",
     initial: "R",
-    text: "My business was at a standstill and I was about to take a huge financial risk. Deepa ji's session literally saved me from a wrong decision. She saw what I couldn't. The clarity she gave me about timing and partnerships was invaluable. Highly recommend to every entrepreneur. ❤️",
+    text: "My business was at a standstill and I was about to take a huge financial risk. Deepa ji's session literally saved me from a wrong decision. She saw what I couldn't. The clarity she gave me about timing and partnerships was invaluable. Highly recommend to every entrepreneur.",
   },
   {
     name: "Manoj",
     role: "Actor",
     initial: "M",
-    text: "I've met many astrologers in my life but Deepa ji is different. She speaks logic, not fear. Her reading of my planetary periods was spot on and she gave me the courage to focus on what I do best during my Sade Sati. She truly changed how I see astrology.",
+    text: "I have met many astrologers in my life but Deepa ji is different. She speaks logic, not fear. Her reading of my planetary periods was spot on and she gave me the courage to focus on what I do best during my Sade Sati. She truly changed how I see astrology.",
   },
   {
     name: "Shubhasish",
     role: "Software Engineer",
     initial: "S",
-    text: "The session was nothing like I expected — in the best way possible. Deepa ji explained complex astrological concepts so simply and mapped them directly to my career struggles. The accuracy was unbelievable. I finally understand why certain periods of my life were so difficult. Thank you! 🌟",
+    text: "The session was nothing like I expected, in the best way possible. Deepa ji explained complex astrological concepts so simply and mapped them directly to my career struggles. The accuracy was unbelievable. I finally understand why certain periods of my life were so difficult. Thank you.",
   },
   {
     name: "Devika",
