@@ -18,17 +18,17 @@ const ServiceCard = ({ title, items, number, category }) => {
                 </div>
 
                 <div className={`card-bg border-3 border-white shadow-lg transform-style-preserve-3d transition-all duration-500 ${isHovered ? "card-bg-animate" : ""}`}>
-                    <div className="bg-maroon text-white p-6 pt-16 transform-style-preserve-3d h-full flex flex-col justify-between">
+                    <div className="bg-maroon text-white p-6 pt-16 transform-style-preserve-3d h-full flex flex-col justify-between" style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}>
                         <div>
-                            <h3 className="text-xl font-bold mb-4 transform translate-z-50 transition-transform duration-500 hover:translate-z-60">{title}</h3>
-                            <ul className="space-y-1 mb-6">
+                            <h3 className="text-lg font-bold mb-3 leading-snug transform translate-z-50 transition-transform duration-500 hover:translate-z-60">{title}</h3>
+                            <ul className="space-y-2 mb-6">
                                 {items.map((item, index) => (
-                                    <li key={index} className="text-sm transform translate-z-30 transition-transform duration-500 hover:translate-z-60">• {item}</li>
+                                    <li key={index} className="text-sm leading-relaxed text-white/85 transform translate-z-30 transition-transform duration-500 hover:translate-z-60">• {item}</li>
                                 ))}
                             </ul>
                         </div>
-                        <button className="bg-white text-maroon text-xs font-bold py-2 px-4 uppercase transform translate-z-20 transition-transform duration-500 hover:translate-z-20 hover:bg-gray-400 hover:text-white rounded-lg shadow-md">
-                            Let's Sit
+                        <button className="bg-white text-maroon text-xs font-semibold py-2 px-4 uppercase tracking-wider transform translate-z-20 transition-transform duration-500 hover:translate-z-20 hover:bg-gray-100 rounded-lg shadow-md">
+                            Let&apos;s Sit
                         </button>
                     </div>
                 </div>
@@ -133,10 +133,13 @@ const ServiceCardsCollection = () => {
 
             <div className="relative z-10 p-8">
                 <div className="max-w-6xl mx-auto mt-8">
-                    <h1 className="text-4xl md:text-5xl font-black text-center mb-2 text-#68020D">
-                        What We Cherish For You -
+                    <p className="text-center text-xs text-red-800/40 uppercase tracking-[4px] mb-3">Services</p>
+                    <h1 className="text-4xl md:text-5xl font-bold text-center mb-3 text-red-800 leading-tight">
+                        What We Cherish For You
                     </h1>
-                    <p className="text-maroon text-center mb-10">(Services)</p>
+                    <p className="text-gray-500 text-center mb-12 text-base max-w-xl mx-auto">
+                        Every problem has a cosmic pattern — we help you read it and act on it.
+                    </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[6rem] gap-y-[5rem] justify-items-center">
                     {serviceData.map((service, index) => (

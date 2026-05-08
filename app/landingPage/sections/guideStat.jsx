@@ -172,48 +172,35 @@ export default function GuidedStatsUI() {
   }, [animate]);
 
   return (
-    <div ref={sectionRef} className="w-full relative p-8 rounded-lg shadow-lg">
+    <div ref={sectionRef} className="w-full relative px-6 md:px-16 py-16 bg-[#fffaf5]">
       <SectionDivider />
 
       <div className={`transition-all duration-1000 ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-        <h1 className="text-5xl font-bold mb-12 text-center mt-10 text-red-800">
+        <p className="text-center text-xs text-red-800/40 uppercase tracking-[4px] mb-3 mt-8">Impact</p>
+        <h2 className="text-4xl md:text-5xl font-bold mb-2 text-center text-red-800 leading-tight">
           So Far We&apos;ve Guided...
-        </h1>
+        </h2>
+        <p className="text-center text-gray-500 mb-14 text-base">Thousands of lives, one clarity at a time.</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
-          <div className={`transition-all duration-1000 delay-100 ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <div className="text-4xl font-bold text-red-800">{counters.individuals.toLocaleString()}+</div>
-            <div className="mt-2 text-lg">
-              individuals
-              <div className="text-sm text-gray-600">(in Relationships, Marriages & Birth issues)</div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
+          {[
+            { count: counters.individuals, label: "Individuals", sub: "Relationships, Marriages & Family", delay: "delay-100" },
+            { count: counters.students,    label: "Students",    sub: "Career guidance & direction",       delay: "delay-200" },
+            { count: counters.business,    label: "Business Owners", sub: "Expansion, risk & planning",  delay: "delay-300" },
+            { count: counters.countries,   label: "Countries",   sub: "Clients across the globe",         delay: "delay-400" },
+            { count: counters.webinars,    label: "Reached",     sub: "Webinars, YouTube & 1-1 sessions", delay: "delay-500" },
+          ].map(({ count, label, sub, delay }) => (
+            <div key={label} className={`transition-all duration-1000 ${delay} ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+              <div className="text-4xl md:text-5xl font-bold text-red-800 leading-none">
+                {count.toLocaleString()}+
+              </div>
+              <div className="mt-3 text-base font-semibold text-gray-800">{label}</div>
+              <div className="mt-1 text-sm text-gray-500 leading-snug">{sub}</div>
             </div>
-          </div>
-
-          <div className={`transition-all duration-1000 delay-200 ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <div className="text-4xl font-bold text-red-800">{counters.students.toLocaleString()}+</div>
-            <div className="mt-2 text-lg">Students in career</div>
-          </div>
-
-          <div className={`transition-all duration-1000 delay-300 ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <div className="text-4xl font-bold text-red-800">{counters.business.toLocaleString()}+</div>
-            <div className="mt-2 text-lg">Business & factory owners</div>
-          </div>
-
-          <div className={`transition-all duration-1000 delay-400 ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <div className="text-4xl font-bold text-red-800">{counters.countries.toLocaleString()}+</div>
-            <div className="mt-2 text-lg">Clients over 10 countries</div>
-          </div>
-
-          <div className={`transition-all duration-1000 delay-500 ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <div className="text-4xl font-bold text-red-800">{counters.webinars.toLocaleString()}+</div>
-            <div className="mt-2 text-lg">
-              individuals in
-              <div className="text-sm text-gray-600">(Webinars, YT & 1-1 sessions)</div>
-            </div>
-          </div>
+          ))}
         </div>
 
-        <div className="flex justify-end mt-6">
+        <div className="flex justify-end mt-10">
           <CelestialAnimation />
         </div>
       </div>

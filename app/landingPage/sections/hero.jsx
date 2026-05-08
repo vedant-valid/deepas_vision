@@ -112,14 +112,20 @@ export default function DeepasVisionWebsite() {
         <Navbar />
         <main className="flex flex-col md:flex-row mt-10 md:mt-20 items-center">
           <div className="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
-            <h2 className="text-5xl md:text-7xl text-red-800 mb-4 md:mb-8">
+            <p className="text-sm text-red-800/50 uppercase tracking-[4px] mb-3 font-medium">
+              Vedic Astrology · Numerology · Lal Kitab
+            </p>
+            <h2
+              className="text-5xl md:text-7xl text-red-800 mb-5 md:mb-8 leading-tight font-bold"
+              style={{ fontFamily: 'var(--font-cinzel)' }}
+            >
               Stuck in a{" "}
-              <span className="min-w-[11ch] text-left animate-pulse">
+              <span className="min-w-[11ch] text-left text-red-600">
                 {currentWord}
               </span>
             </h2>
 
-            <p className="text-xl md:text-2xl text-red-800 font-medium">
+            <p className="text-lg md:text-xl text-red-800/80 font-medium leading-relaxed">
               दौड़ का ये फेरा, कौन सा रास्ता है मेरा?
             </p>
           </div>
