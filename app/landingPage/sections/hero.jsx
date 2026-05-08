@@ -124,14 +124,33 @@ export default function DeepasVisionWebsite() {
             </p>
           </div>
 
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-1/2 relative flex items-center justify-center">
+            {/* Glow ring behind video */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div style={{
+                width: '70%', height: '70%', borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(156,32,32,0.10) 0%, transparent 70%)',
+                animation: 'heroGlow 4s ease-in-out infinite',
+              }} />
+            </div>
+            <style>{`
+              @keyframes heroGlow {
+                0%,100% { transform: scale(1);   opacity: 0.6; }
+                50%      { transform: scale(1.15); opacity: 1;   }
+              }
+              @keyframes heroFloat {
+                0%,100% { transform: translateY(0px); }
+                50%      { transform: translateY(-14px); }
+              }
+            `}</style>
             <video
               src="/videos/hero-medi-21 (1).mp4"
               autoPlay
               muted
               loop
               playsInline
-              className="w-full h-auto object-cover max-w-lg mx-auto"
+              className="w-full h-auto object-cover max-w-lg mx-auto relative z-10"
+              style={{ animation: 'heroFloat 6s ease-in-out infinite' }}
             />
           </div>
         </main>

@@ -126,6 +126,7 @@ const ServiceCardsCollection = () => {
 
     return (
         <div className="relative min-h-screen">
+            <Sparkles />
             <div className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0">
                 <div className="absolute inset-0 bg-white/91" />
             </div>
@@ -139,12 +140,17 @@ const ServiceCardsCollection = () => {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[6rem] gap-y-[5rem] justify-items-center">
                     {serviceData.map((service, index) => (
-                            <ServiceCard
+                            <div
                                 key={index}
-                                title={service.title}
-                                items={service.items}
-                                number={service.number}
-                            />
+                                className="float-card"
+                                style={{ animationDelay: `${(index % 4) * 0.4}s`, animationDuration: `${4 + (index % 3) * 0.8}s` }}
+                            >
+                                <ServiceCard
+                                    title={service.title}
+                                    items={service.items}
+                                    number={service.number}
+                                />
+                            </div>
                         ))}
                     </div>
 
@@ -160,6 +166,53 @@ const ServiceCardsCollection = () => {
         </div>
     );
 };
+
+const SPARKLES = [
+  { top:'8%',  left:'5%',  size:5, delay:0    },
+  { top:'15%', left:'88%', size:4, delay:0.6  },
+  { top:'30%', left:'12%', size:6, delay:1.2  },
+  { top:'50%', left:'95%', size:4, delay:0.3  },
+  { top:'65%', left:'3%',  size:5, delay:1.8  },
+  { top:'75%', left:'80%', size:6, delay:0.9  },
+  { top:'88%', left:'20%', size:4, delay:1.5  },
+  { top:'92%', left:'70%', size:5, delay:0.4  },
+  { top:'40%', left:'50%', size:3, delay:2.1  },
+  { top:'20%', left:'60%', size:4, delay:1.0  },
+];
+
+function Sparkles() {
+  return (
+    <>
+      <style>{`
+        @keyframes sparkle {
+          0%,100% { opacity:0; transform:scale(0.5) rotate(0deg);   }
+          50%      { opacity:1; transform:scale(1.2) rotate(180deg); }
+        }
+        @keyframes floatUp {
+          0%,100% { transform:translateY(0);    }
+          50%      { transform:translateY(-18px); }
+        }
+        .sparkle-star { animation: sparkle 2.5s ease-in-out infinite; }
+        .float-card   { animation: floatUp 5s ease-in-out infinite;   }
+      `}</style>
+      {SPARKLES.map((s, i) => (
+        <svg
+          key={i}
+          style={{
+            position:'absolute', top:s.top, left:s.left,
+            width:s.size*4, height:s.size*4,
+            animationDelay:`${s.delay}s`, pointerEvents:'none', zIndex:1,
+          }}
+          className="sparkle-star"
+          viewBox="0 0 20 20"
+        >
+          <polygon points="10,1 12.5,7.5 19,7.5 13.5,12 15.5,19 10,15 4.5,19 6.5,12 1,7.5 7.5,7.5"
+            fill="rgba(156,32,32,0.35)" />
+        </svg>
+      ))}
+    </>
+  );
+}
 
 const styles = `
   @keyframes bgShift {
