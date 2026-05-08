@@ -27,6 +27,9 @@
     "react-parallax-tilt": "^1.7.295",
     "swisseph": "^0.5.17"
   },
+  "engines": {
+    "node": "20.x"
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
