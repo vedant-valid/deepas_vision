@@ -25,3 +25,12 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.animate-in {
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.animate-in.animated {
+  opacity: 1;
+  transform: translateY(0);
+}

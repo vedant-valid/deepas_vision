@@ -1,15 +1,15 @@
 'use client'
 
-import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 
 type Props = { isAuthenticated: boolean; email?: string }
 
 export default function AuthButton({ isAuthenticated, email }: Props) {
   const router = useRouter()
-  const supabase = createClient()
 
   async function signInWithGoogle() {
+    const { createClient } = await import('@/lib/supabase/client')
+    const supabase = createClient()
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: { redirectTo: `${window.location.origin}/auth/callback?next=/kundli` },
@@ -17,6 +17,8 @@ export default function AuthButton({ isAuthenticated, email }: Props) {
   }
 
   async function signOut() {
+    const { createClient } = await import('@/lib/supabase/client')
+    const supabase = createClient()
     await supabase.auth.signOut()
     router.refresh()
   }

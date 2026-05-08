@@ -1,5 +1,3 @@
-import { createClient } from '@/lib/supabase/server'
-import { getSavedCharts } from './actions'
 import KundliPageClient from './components/KundliPageClient'
 import AuthButton from './components/AuthButton'
 
@@ -8,11 +6,7 @@ export const metadata = {
   description: 'Generate your Vedic birth chart (Kundli) with accurate sidereal calculations and AI-powered interpretation.',
 }
 
-export default async function KundliPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  const savedCharts = user ? await getSavedCharts() : []
-
+export default function KundliPage() {
   return (
     <div className="min-h-screen">
       <div className="bg-[#68020d] text-white py-3 px-6 flex items-center justify-between">
@@ -22,13 +16,10 @@ export default async function KundliPage() {
             Sidereal Vedic chart · Lahiri Ayanamsa · North Indian style
           </p>
         </div>
-        <AuthButton isAuthenticated={!!user} email={user?.email} />
+        <AuthButton isAuthenticated={false} />
       </div>
 
-      <KundliPageClient
-        isAuthenticated={!!user}
-        savedCharts={savedCharts}
-      />
+      <KundliPageClient isAuthenticated={false} savedCharts={[]} />
     </div>
   )
 }

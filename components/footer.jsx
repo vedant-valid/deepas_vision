@@ -1,109 +1,169 @@
 "use client"
 import { motion } from "framer-motion";
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, Star, Moon } from "lucide-react";
+import { Facebook, Instagram, Youtube, Mail, Phone, Star } from "lucide-react";
+
+const STARS = [
+  { top: "8%",  left: "12%", size: 2,   delay: 0    },
+  { top: "15%", left: "35%", size: 1.5, delay: 0.9  },
+  { top: "5%",  left: "67%", size: 2.5, delay: 0.3  },
+  { top: "22%", left: "82%", size: 1.5, delay: 1.5  },
+  { top: "40%", left: "5%",  size: 1.5, delay: 0.6  },
+  { top: "35%", left: "55%", size: 2,   delay: 1.2  },
+  { top: "60%", left: "25%", size: 1,   delay: 2.1  },
+  { top: "70%", left: "75%", size: 2,   delay: 0.4  },
+  { top: "85%", left: "10%", size: 1.5, delay: 1.8  },
+  { top: "90%", left: "45%", size: 1,   delay: 0.7  },
+  { top: "75%", left: "90%", size: 2,   delay: 1.1  },
+  { top: "50%", left: "95%", size: 1.5, delay: 2.4  },
+  { top: "12%", left: "50%", size: 1,   delay: 0.2  },
+  { top: "30%", left: "18%", size: 2,   delay: 1.6  },
+  { top: "65%", left: "60%", size: 1.5, delay: 0.8  },
+  { top: "45%", left: "40%", size: 1,   delay: 2.0  },
+  { top: "18%", left: "92%", size: 1,   delay: 1.3  },
+  { top: "55%", left: "8%",  size: 1.5, delay: 2.6  },
+  { top: "92%", left: "70%", size: 1,   delay: 0.5  },
+  { top: "3%",  left: "22%", size: 1.5, delay: 1.9  },
+];
+
+const NAV_LINKS = [
+  { name: "Home",                  href: "#home"     },
+  { name: "How It Works",          href: "#about"    },
+  { name: "Services (समाधान)",     href: "#samadhan" },
+  { name: "Products",              href: "/products" },
+  { name: "Testimonials (भरोसा)", href: "#bharosa"  },
+  { name: "Book a Session",        href: "#contact"  },
+];
+
+const SERVICE_LINKS = [
+  "Students & Career",
+  "Business Owners",
+  "Corporate Professionals",
+  "Relationships & Family",
+  "Mental Health",
+  "Health Problems",
+  "Investments",
+  "Civil Servants",
+];
 
 const Footer = () => {
   return (
-    <footer id="contact" className="relative bg-gradient-to-b from-white to-blackpt-24 pb-16 overflow-hidden pt-24">
-      {/* Paper-cut decorative elements */}
-      <div className="absolute bottom-0 rotate-180 left-0 w-full overflow-hidden pointer-events-none z-0">
-        <svg className="w-full h-48" viewBox="0 0 1440 320" preserveAspectRatio="none">
-          <path
-            fill="url(#grad)"
-            fillOpacity="1"
-            d="M0,224L60,213.3C120,203,240,181,360,170.7C480,160,600,160,720,181.3C840,203,960,245,1080,245.3C1200,245,1320,203,1380,181.3L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
-          ></path>
-          <defs>
-            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style={{ stopColor: "#fee2e2", stopOpacity: 1 }} />
-              <stop offset="100%" style={{ stopColor: "#991b1b", stopOpacity: 1 }} />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
-      {/* Cosmic decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Red gradient circles */}
-        <div className="absolute -left-20 -bottom-20 w-96 h-96 bg-gradient-to-br from-red-800/5 to-red-800/10 rounded-full blur-3xl"></div>
-        <div className="absolute -right-20 top-1/4 w-80 h-80 bg-gradient-to-br from-red-800/10 to-red-800/15 rounded-full blur-3xl"></div>
-        
-        {/* Stars */}
-        {[...Array(12)].map((_, i) => (
+    <footer className="relative bg-[#0C0705] pt-24 pb-10 overflow-hidden">
+      {/* Twinkling stars */}
+      <div className="absolute inset-0 pointer-events-none">
+        {STARS.map((star, i) => (
           <motion.div
             key={i}
-            className="absolute bg-red-800/30 rounded-full"
+            className="absolute rounded-full bg-amber-300"
             style={{
-              width: `${Math.random() * 3 + 1}px`,
-              height: `${Math.random() * 3 + 1}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              top: star.top,
+              left: star.left,
+              width: star.size,
+              height: star.size,
             }}
-            animate={{
-              opacity: [0.3, 0.8, 0.3],
-            }}
+            animate={{ opacity: [0.1, 0.9, 0.1] }}
             transition={{
-              duration: Math.random() * 3 + 2,
+              duration: 2.5 + (i % 4),
               repeat: Infinity,
               ease: "easeInOut",
+              delay: star.delay,
             }}
           />
         ))}
       </div>
 
+      {/* Om watermark */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+        <span
+          className="text-[20rem] leading-none"
+          style={{ color: "rgba(180,120,20,0.035)", fontFamily: "serif" }}
+        >
+          ॐ
+        </span>
+      </div>
+
+      {/* Top accent line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-700/40 to-transparent" />
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-      
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-         
+        {/* Brand header */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2
+            className="text-4xl md:text-6xl italic font-bold text-amber-400 mb-4 tracking-wide"
+            style={{
+              fontFamily: "var(--font-cinzel)",
+              textShadow: "0 0 50px rgba(217,170,50,0.2)",
+            }}
+          >
+            Deepa&apos;s Vision
+          </h2>
+          <p className="text-amber-700/60 text-xs tracking-[0.4em] uppercase">
+            — ज्योतिष &nbsp;•&nbsp; नक्षत्र &nbsp;•&nbsp; कर्म —
+          </p>
+        </motion.div>
+
+        {/* 4-column grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+          {/* Brand */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl  italic font-bold text-gray-900 mb-6 flex items-center">
-             
-              Deepa's vision
-            </h3>
-            <p className="text-gray-600 mb-6 leading-relaxed">
-            Astrology is just a finger pointing at reality.
+            <p className="text-amber-100/50 text-sm leading-relaxed mb-5">
+              Astrology is just a finger pointing at reality. We help you understand where to look — not just what to see.
             </p>
-            <div className="flex space-x-4">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
+            <p className="text-amber-500/60 italic text-sm mb-7">
+              &ldquo;तारों की भाषा, जीवन का मार्ग।&rdquo;
+            </p>
+            <div className="flex gap-3">
+              {[
+                { Icon: Facebook, href: "#" },
+                { Icon: Instagram, href: "#" },
+                { Icon: Youtube,   href: "#" },
+              ].map(({ Icon, href }, i) => (
                 <motion.a
-                  key={index}
-                  href="#"
-                  whileHover={{ y: -3, scale: 1.1, color: "#991b1b" }}
+                  key={i}
+                  href={href}
+                  whileHover={{ y: -3, scale: 1.12 }}
                   whileTap={{ scale: 0.9 }}
-                  className="text-black hover:text-red-800 transition-colors duration-300 bg-white p-2 rounded-full shadow-sm"
+                  className="w-9 h-9 rounded-full border border-amber-800/40 flex items-center justify-center text-amber-500/70 hover:text-amber-300 hover:border-amber-500/60 hover:bg-amber-950/50 transition-all duration-300"
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-4 h-4" />
                 </motion.a>
               ))}
             </div>
           </motion.div>
 
-          {/* Quick links */}
+          {/* Navigation */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
-              <Star className="w-5 h-5 text-red-800 mr-2" />
-              Quick Links
+            <h4 className="text-amber-400 text-xs font-semibold tracking-[0.25em] uppercase mb-6 flex items-center gap-2">
+              <Star className="w-3 h-3 fill-amber-400" /> Navigation
             </h4>
             <ul className="space-y-3">
-              {[ 'Services', 'Products ', '9 Grahas','Testimonials','FAQS'].map((item, index) => (
+              {NAV_LINKS.map((item, i) => (
                 <motion.li
-                  key={index}
+                  key={i}
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <a href="#" className="text-gray-600 hover:text-red-800 transition-colors duration-300 flex items-center group">
-                    <span className="w-2 h-2 bg-red-800 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                    {item}
+                  <a
+                    href={item.href}
+                    className="text-amber-100/50 hover:text-amber-300 text-sm transition-colors duration-300 flex items-center gap-2.5 group"
+                  >
+                    <span className="w-1 h-1 rounded-full bg-amber-800 group-hover:bg-amber-500 transition-colors flex-shrink-0" />
+                    {item.name}
                   </a>
                 </motion.li>
               ))}
@@ -117,19 +177,21 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
-              <Star className="w-5 h-5 text-red-800 mr-2" />
-              Our Services
+            <h4 className="text-amber-400 text-xs font-semibold tracking-[0.25em] uppercase mb-6 flex items-center gap-2">
+              <Star className="w-3 h-3 fill-amber-400" /> Consult For
             </h4>
             <ul className="space-y-3">
-              {['Students & Career', 'Corporate Professionals', 'Health Problem', 'Business', '& more'].map((item, index) => (
+              {SERVICE_LINKS.map((item, i) => (
                 <motion.li
-                  key={index}
+                  key={i}
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <a href="#" className="text-gray-600 hover:text-red-800 transition-colors duration-300 flex items-center group">
-                    <span className="w-2 h-2 bg-red-800 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  <a
+                    href="#samadhan"
+                    className="text-amber-100/50 hover:text-amber-300 text-sm transition-colors duration-300 flex items-center gap-2.5 group"
+                  >
+                    <span className="w-1 h-1 rounded-full bg-amber-800 group-hover:bg-amber-500 transition-colors flex-shrink-0" />
                     {item}
                   </a>
                 </motion.li>
@@ -144,87 +206,79 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
-              <Star className="w-5 h-5 text-red-800 mr-2" />
-              Contact Us
+            <h4 className="text-amber-400 text-xs font-semibold tracking-[0.25em] uppercase mb-6 flex items-center gap-2">
+              <Star className="w-3 h-3 fill-amber-400" /> Reach Out
             </h4>
-            <ul className="space-y-4">
-              <motion.li 
-                className="flex items-start"
-                whileHover={{ scale: 1.02 }}
-              >
-                <div className="bg-gradient-to-br from-red-800/10 to-red-800/20 p-2 rounded-lg mr-4 shadow-inner">
-                  <Mail className="w-5 h-5 text-red-800" />
+            <ul className="space-y-5 mb-8">
+              <li className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full border border-amber-800/40 flex items-center justify-center text-amber-500/70 flex-shrink-0 mt-0.5">
+                  <Mail className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <p className="text-black text-sm">Email us at</p>
-                  <a href="mailto:hello@cosmicastrology.com" className="text-gray-800 hover:text-red-800 transition-colors duration-300">
-                  vedant.work6@gmail.com
+                  <p className="text-amber-200/30 text-[10px] uppercase tracking-widest mb-1">Email</p>
+                  <a
+                    href="mailto:vedant.work6@gmail.com"
+                    className="text-amber-100/60 hover:text-amber-300 transition-colors text-sm break-all"
+                  >
+                    vedant.work6@gmail.com
                   </a>
                 </div>
-              </motion.li>
-              <motion.li 
-                className="flex items-start"
-                whileHover={{ scale: 1.02 }}
-              >
-                <div className="bg-gradient-to-br from-red-800/10 to-red-800/20 p-2 rounded-lg mr-4 shadow-inner">
-                  <Phone className="w-5 h-5 text-red-800" />
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full border border-amber-800/40 flex items-center justify-center text-amber-500/70 flex-shrink-0 mt-0.5">
+                  <Phone className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <p className="text-gray-500 text-sm">Call us at</p>
-                  <a href="tel:+1234567890" className="text-gray-800 hover:text-red-800 transition-colors duration-300">
-                  +919039953535
+                  <p className="text-amber-200/30 text-[10px] uppercase tracking-widest mb-1">WhatsApp / Call</p>
+                  <a
+                    href="tel:+919039953535"
+                    className="text-amber-100/60 hover:text-amber-300 transition-colors text-sm"
+                  >
+                    +91 90399 53535
                   </a>
                 </div>
-              </motion.li>
+              </li>
             </ul>
+
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-800 to-amber-700 hover:from-amber-700 hover:to-amber-600 text-amber-100 text-sm font-medium px-5 py-2.5 rounded-full shadow-lg transition-all duration-300"
+            >
+              ✦ Book a Session
+            </motion.a>
           </motion.div>
         </div>
 
-        {/* Divider with paper-cut effect */}
-        <motion.div 
-          className="relative my-12 h-1"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-800/20 to-transparent" style={{
-            clipPath: 'polygon(0% 50%, 5% 60%, 10% 50%, 15% 40%, 20% 50%, 25% 60%, 30% 50%, 35% 40%, 40% 50%, 45% 60%, 50% 50%, 55% 40%, 60% 50%, 65% 60%, 70% 50%, 75% 40%, 80% 50%, 85% 60%, 90% 50%, 95% 40%, 100% 50%)'
-          }}></div>
-        </motion.div>
+        {/* Navagraha divider */}
+        <div className="flex items-center gap-4 my-10">
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent to-amber-900/30" />
+          <div className="flex items-center gap-3 text-amber-700/50 text-xs tracking-[0.4em] uppercase">
+            <span className="text-base">✦</span>
+            <span>नवग्रह</span>
+            <span className="text-base">✦</span>
+          </div>
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent to-amber-900/30" />
+        </div>
 
-        {/* Bottom footer */}
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="text-black text-sm mb-4 md:mb-0"
-          >
-            © {new Date().getFullYear()} Deepa's vision. All celestial rights reserved.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-4 md:gap-6"
-          >
-            {['Privacy Policy', 'Terms of Service', 'Cookies', 'FAQ'].map((item, index) => (
+        {/* Bottom bar */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-amber-200/25 text-xs">
+            © {new Date().getFullYear()} Deepa&apos;s Vision — सर्वाधिकार सुरक्षित।
+          </p>
+          <div className="flex flex-wrap justify-center gap-5">
+            {["Privacy Policy", "Terms of Service", "FAQ"].map((item, i) => (
               <motion.a
-                key={index}
+                key={i}
                 href="#"
-                whileHover={{ y: -2, color: "#991b1b" }}
-                className="text-black   text-sm transition-colors duration-300 relative px-2"
+                whileHover={{ y: -1 }}
+                className="text-amber-200/25 hover:text-amber-500/60 text-xs transition-colors duration-300"
               >
                 {item}
-                <span className="absolute bottom-0 left-0 w-0 h-px bg-red-800 transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </footer>

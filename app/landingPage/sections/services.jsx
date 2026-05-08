@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import Paper from "../../../public/assets/border.png";
-import Image from "next/image";
+import SectionDivider from "@/components/SectionDivider";
 
 const ServiceCard = ({ title, items, number, category }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -229,14 +228,7 @@ const styles = `
 const ServiceCards = () => {
     return (
         <div className='relative '>
-            <div className="absolute z-99 -top-1 left-0 w-full h-16">
-                <Image
-                    src={Paper}
-                    alt="Torn Paper Top"
-                    objectFit="cover"
-                    className="w-full h-full"
-                />
-            </div>
+            <SectionDivider />
             <style>{styles}</style>
             <ServiceCardsCollection />
         </div>

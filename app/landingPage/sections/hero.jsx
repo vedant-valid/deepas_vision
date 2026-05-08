@@ -1,10 +1,7 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
 import Navbar from "@/components/navbar";
-import Paper from "../../../public/assets/border.png";
-import Pic2 from "../../../public/assets/pic2.png";
-import Pic3 from "../../../public/assets/newborder.png";
+import TopBanner from "@/components/TopBanner";
 
 export default function DeepasVisionWebsite() {
   const words = ["loop?", "doubt?", "guilt?"];
@@ -56,7 +53,7 @@ export default function DeepasVisionWebsite() {
       id: 2,
       name: "Sourav Joshi",
       role: "Youtuber, Vlogger & Artist",
-      videoUrl: "/videos/review/sourav&Kundli-1.mp4",
+      videoUrl: "/videos/review/sourav&kundli-1.mp4",
       thumbnailUrl: "/thumbnails/Sourav.png",
       review:
         "Sourav mentioned many times that he took major decisions considering astrology and settled things accordingly.",
@@ -109,16 +106,7 @@ export default function DeepasVisionWebsite() {
 
   return (
     <div id="home" className="relative min-h-screen bg-white">
-      {/* Top Border */}
-      <div className="relative w-full">
-        <Image
-          src={Paper}
-          alt="Torn Border"
-          className="w-full h-auto"
-          priority
-        />
-      </div>
-
+      <TopBanner />
       {/* Main Content */}
       <div className="relative max-w-7xl mx-auto px-4">
         <Navbar />
@@ -172,7 +160,7 @@ export default function DeepasVisionWebsite() {
               <div className="mt-3">
                 <p className="text-lg font-semibold">{review.name}</p>
                 <p className="text-sm text-gray-600">
-                  {review.role}, {review.company}
+                  {review.role}
                 </p>
                 <p className="mt-2 text-sm italic text-gray-800">
                   "{review.review}"

@@ -2,7 +2,6 @@
 // pages/products.js
 "use client";
 import { useState, useEffect } from 'react';
-import Head from 'next/head';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '@/components/navbar';
 
@@ -340,7 +339,7 @@ const ProductsPage = () => {
               <img src={selectedProduct.image} alt={selectedProduct.name} className="w-full h-64 object-cover rounded-lg mb-4" />
               <h2 className="text-2xl font-semibold text-red-800 mb-2">{selectedProduct.name}</h2>
               <p className="text-gray-700 mb-4">{selectedProduct.description}</p>
-              <div className="text-sm text-gray-600 mb-2">Price: ₹{selectedProduct.price}</div>
+              <div className="text-sm text-red-700 font-medium mb-2">📞 Contact us for pricing</div>
               {selectedProduct.zodiac && <div className="text-sm text-gray-600">Zodiac: {selectedProduct.zodiac}</div>}
               {selectedProduct.planet && <div className="text-sm text-gray-600 mb-2">Planet: {selectedProduct.planet}</div>}
               {selectedProduct.benefits && (

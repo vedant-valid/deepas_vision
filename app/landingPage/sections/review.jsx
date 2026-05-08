@@ -3,8 +3,7 @@ import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 import { ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX, Quote } from "lucide-react";
-import Paper from "../../../public/assets/border.png";
-import Image from "next/image";
+import SectionDivider from "@/components/SectionDivider";
 
 const VideoReviewSection = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -88,9 +87,7 @@ const VideoReviewSection = () => {
 
   return (
     <section id="bharosa" className="bg-gradient-to-b relative from-red-50 to-red-100 py-24 px-4 relative overflow-hidden">
-      <div className="absolute -top-1 left-0 w-full h-16">
-        <Image src={Paper} alt="Torn Paper Top" objectFit="cover" className="w-full h-full" />
-      </div>
+      <SectionDivider />
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -left-20 -top-20 w-96 h-96 bg-red-800/5 rounded-full blur-3xl animate-float-slow"></div>

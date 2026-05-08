@@ -11,14 +11,12 @@ const Navbar = () => {
   const router = useRouter();
 
   const menuItems = [
-    { name: "HOME", href: "#home" },
-    { name: "ABOUT", href: "#about" },
-    { name: "समाधान", href: "#samadhan" },
-    { name: "PRODUCTS", href: "/products", external: true },
-    { name: "9 GRAHAS", href: "#grahas" },
-    { name: "भरोसा", href: "#bharosa" },
-    { name: "FAQS", href: "#faqs" },
-    { name: "CONTACT", href: "#contact" },
+    { name: "HOME",     href: "#home"     },
+    { name: "ABOUT",    href: "#about"    },
+    { name: "SERVICES", href: "#samadhan" },
+    { name: "KUNDLI",   href: "#kundli"   },
+    { name: "FAQS",     href: "#faqs"     },
+    { name: "CONTACT",  href: "#contact"  },
   ];
   
   return (
@@ -26,12 +24,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <motion.h1
-          className="text-2xl md:text-3xl italic text-amber-900"
+          className="text-xl md:text-2xl text-amber-900 tracking-wide"
+          style={{ fontFamily: 'var(--font-cinzel)' }}
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Deepa's Vision */}
+          Deepa&apos;s Vision
         </motion.h1>
 
         {/* Hamburger (mobile) */}

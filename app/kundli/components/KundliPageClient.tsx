@@ -1,13 +1,16 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import BirthDetailsForm from './BirthDetailsForm'
 import KundliChart from './KundliChart'
 import PlanetTable from './PlanetTable'
-import InterpretationPanel from './InterpretationPanel'
 import { saveChart } from '@/app/kundli/actions'
 import type { KundliData } from '@/lib/astro/types'
 import type { SavedChart } from '@/app/kundli/actions'
+
+// ssr: false prevents @ai-sdk/react from accessing localStorage during SSR
+const InterpretationPanel = dynamic(() => import('./InterpretationPanel'), { ssr: false })
 
 type ChartResult = {
   kundliData: KundliData
