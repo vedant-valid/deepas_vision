@@ -112,22 +112,54 @@ export default function DeepasVisionWebsite() {
         <Navbar />
         <main className="flex flex-col md:flex-row mt-10 md:mt-20 items-center">
           <div className="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
-            <p className="text-sm text-red-800/60 tracking-wide mb-3 font-medium italic">
+
+            {/* Whisper hook */}
+            <p className="text-sm text-red-800/50 italic mb-6 tracking-wide">
               &ldquo;It&apos;s not too late — we can still reset.&rdquo;
             </p>
+
+            {/* Main headline */}
             <h2
-              className="text-5xl md:text-7xl text-red-800 mb-5 md:mb-8 leading-tight font-bold"
+              className="text-5xl md:text-7xl text-red-800 mb-6 leading-[1.1] font-bold"
               style={{ fontFamily: 'var(--font-playfair)' }}
             >
               Stuck in a{" "}
-              <span className="min-w-[11ch] text-left text-red-600">
-                {currentWord}
+              <span className="relative inline-block">
+                <span className="text-red-600">{currentWord}</span>
+                <span className="animate-pulse text-red-400">|</span>
               </span>
             </h2>
 
-            <p className="text-lg md:text-xl text-red-800/80 font-medium leading-relaxed">
+            {/* Pain-point hooks */}
+            <div className="flex flex-col gap-2 mb-7">
+              {[
+                "Career going nowhere — and you don't know why?",
+                "Relationships breaking down, no matter what you try?",
+                "Feels like others are winning a race you can't even see?",
+              ].map((line, i) => (
+                <div key={i} className="flex items-start gap-2.5">
+                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-red-700/60 flex-shrink-0" />
+                  <p className="text-sm md:text-base text-gray-700 leading-snug">{line}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Hindi tagline */}
+            <p
+              className="text-base md:text-lg text-red-800/70 font-medium mb-8 border-l-2 border-red-300 pl-3"
+              style={{ fontFamily: "'Noto Serif Devanagari', serif" }}
+            >
               दौड़ का ये फेरा, कौन सा रास्ता है मेरा?
             </p>
+
+            {/* CTA */}
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-xl shadow-md transition-all duration-200 hover:opacity-90"
+              style={{ background: "linear-gradient(135deg, #68020d, #9c2020)" }}
+            >
+              Let&apos;s find your path →
+            </a>
           </div>
 
           <div className="w-full md:w-1/2 relative flex items-center justify-center">
