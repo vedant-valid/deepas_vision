@@ -25,9 +25,14 @@ export default function AuthButton({ isAuthenticated, email }: Props) {
 
   if (isAuthenticated) {
     return (
-      <div className="flex items-center gap-3 text-xs text-white/80">
-        <span>{email}</span>
-        <button onClick={signOut} className="underline hover:text-white">Sign out</button>
+      <div className="flex items-center gap-3">
+        <span className="text-[10px] text-[#c9a84c]/60 tracking-wide hidden sm:block">{email}</span>
+        <button
+          onClick={signOut}
+          className="text-[10px] text-[#c9a84c] border border-[#c9a84c]/40 px-3 py-1.5 tracking-widest hover:border-[#c9a84c] hover:bg-[#c9a84c]/10 transition-colors"
+        >
+          SIGN OUT
+        </button>
       </div>
     )
   }
@@ -35,9 +40,9 @@ export default function AuthButton({ isAuthenticated, email }: Props) {
   return (
     <button
       onClick={signInWithGoogle}
-      className="text-xs bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded transition-colors"
+      className="text-[10px] text-[#c9a84c] border border-[#c9a84c]/40 px-3 py-1.5 tracking-widest hover:border-[#c9a84c] hover:bg-[#c9a84c]/10 transition-colors whitespace-nowrap"
     >
-      Sign in with Google
+      SIGN IN
     </button>
   )
 }
