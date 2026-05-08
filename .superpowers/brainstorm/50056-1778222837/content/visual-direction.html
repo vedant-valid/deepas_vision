@@ -1,0 +1,106 @@
+<h2>Which visual direction feels right for the Kundli page?</h2>
+<p class="subtitle">Pick the overall mood and aesthetic before we design the layout</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="sacred" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #1a0a00 0%, #3d1000 50%, #6b1a0a 100%); padding: 20px; min-height: 180px; display: flex; flex-direction: column; gap: 10px;">
+      <div style="border: 1px solid #c9a84c; padding: 10px; border-radius: 4px;">
+        <div style="color: #c9a84c; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">✦ Free Kundli Generator ✦</div>
+        <div style="color: #e8c87a; font-size: 8px; letter-spacing: 1px;">Sidereal Vedic chart · Lahiri Ayanamsa</div>
+      </div>
+      <div style="display: flex; gap: 8px; flex: 1;">
+        <div style="width: 100px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); border-radius: 4px; padding: 8px;">
+          <div style="color: #c9a84c; font-size: 7px; letter-spacing: 2px; margin-bottom: 6px;">BIRTH DETAILS</div>
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 2px; height: 14px; margin-bottom: 4px;"></div>
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 2px; height: 14px; margin-bottom: 4px;"></div>
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 2px; height: 14px; margin-bottom: 8px;"></div>
+          <div style="background: #c9a84c; border-radius: 2px; height: 18px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: #1a0a00; font-size: 7px; letter-spacing: 1px;">GENERATE</span>
+          </div>
+        </div>
+        <div style="flex: 1; background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 60px; height: 60px; border: 1px solid #c9a84c; transform: rotate(45deg); display: flex; align-items: center; justify-content: center;">
+            <div style="width: 40px; height: 40px; border: 1px solid rgba(201,168,76,0.5); display: flex; align-items: center; justify-content: center;">
+              <div style="color: #c9a84c; font-size: 8px; transform: rotate(-45deg);">♈</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Sacred / Temple</h3>
+      <p>Deep burgundy + gold. Ornate borders, Sanskrit-inspired details. Feels like an ancient text brought to life. Rich and ceremonial.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="modern" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #fdfaf5; padding: 20px; min-height: 180px; display: flex; flex-direction: column; gap: 10px; border: 1px solid #e8d5b0;">
+      <div style="background: #68020d; padding: 10px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div style="color: white; font-size: 10px; letter-spacing: 2px; font-weight: 600;">FREE KUNDLI GENERATOR</div>
+          <div style="color: rgba(255,255,255,0.6); font-size: 7px; margin-top: 2px;">Sidereal · Lahiri Ayanamsa · North Indian</div>
+        </div>
+        <div style="background: white; color: #68020d; font-size: 7px; padding: 4px 8px; border-radius: 20px;">Sign in</div>
+      </div>
+      <div style="display: flex; gap: 8px; flex: 1;">
+        <div style="width: 110px; background: white; border-radius: 8px; padding: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+          <div style="color: #68020d; font-size: 7px; letter-spacing: 1px; margin-bottom: 6px; font-weight: 600;">BIRTH DETAILS</div>
+          <div style="background: #f5f5f5; border-radius: 4px; height: 14px; margin-bottom: 4px;"></div>
+          <div style="background: #f5f5f5; border-radius: 4px; height: 14px; margin-bottom: 4px;"></div>
+          <div style="background: #f5f5f5; border-radius: 4px; height: 14px; margin-bottom: 8px;"></div>
+          <div style="background: #68020d; border-radius: 4px; height: 20px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: white; font-size: 7px; letter-spacing: 1px;">GENERATE KUNDLI</span>
+          </div>
+        </div>
+        <div style="flex: 1; background: white; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); display: flex; flex-direction: column; padding: 10px; gap: 6px;">
+          <div style="background: #fef0e6; border-radius: 4px; height: 50px;"></div>
+          <div style="display: flex; gap: 4px;">
+            <div style="flex: 1; background: #f5f0eb; border-radius: 4px; height: 20px;"></div>
+            <div style="flex: 1; background: #f5f0eb; border-radius: 4px; height: 20px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Modern Elegant</h3>
+      <p>Cream background, white cards, soft shadows. The dark-red accent pops cleanly. Feels premium and approachable. Easy to read.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="cosmic" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #05050f 0%, #0d0d2b 50%, #1a0a2e 100%); padding: 20px; min-height: 180px; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.6) 0%, transparent 100%), radial-gradient(1px 1px at 70% 20%, rgba(255,255,255,0.4) 0%, transparent 100%), radial-gradient(1px 1px at 50% 70%, rgba(255,255,255,0.5) 0%, transparent 100%), radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,0.3) 0%, transparent 100%), radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.4) 0%, transparent 100%);"></div>
+      <div style="position: relative; background: rgba(138,43,226,0.2); border: 1px solid rgba(138,43,226,0.4); padding: 8px 12px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div style="color: #d4b8ff; font-size: 10px; letter-spacing: 2px;">✧ FREE KUNDLI GENERATOR ✧</div>
+          <div style="color: rgba(212,184,255,0.5); font-size: 7px; margin-top: 2px;">Cosmic · Vedic · Sidereal</div>
+        </div>
+        <div style="background: rgba(138,43,226,0.4); color: #d4b8ff; font-size: 7px; padding: 3px 7px; border-radius: 10px; border: 1px solid rgba(138,43,226,0.6);">Sign in</div>
+      </div>
+      <div style="position: relative; display: flex; gap: 8px; flex: 1;">
+        <div style="width: 100px; background: rgba(255,255,255,0.03); border: 1px solid rgba(138,43,226,0.3); border-radius: 4px; padding: 8px;">
+          <div style="color: #d4b8ff; font-size: 7px; letter-spacing: 1px; margin-bottom: 6px;">BIRTH DETAILS</div>
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(138,43,226,0.2); border-radius: 2px; height: 14px; margin-bottom: 4px;"></div>
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(138,43,226,0.2); border-radius: 2px; height: 14px; margin-bottom: 4px;"></div>
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(138,43,226,0.2); border-radius: 2px; height: 14px; margin-bottom: 8px;"></div>
+          <div style="background: linear-gradient(90deg, #6b21a8, #8b5cf6); border-radius: 2px; height: 18px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: white; font-size: 7px; letter-spacing: 1px;">GENERATE</span>
+          </div>
+        </div>
+        <div style="flex: 1; background: rgba(255,255,255,0.02); border: 1px solid rgba(138,43,226,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 55px; height: 55px; border: 1px solid rgba(138,43,226,0.6); transform: rotate(45deg); box-shadow: 0 0 10px rgba(138,43,226,0.3); display: flex; align-items: center; justify-content: center;">
+            <div style="width: 36px; height: 36px; border: 1px solid rgba(138,43,226,0.4); display: flex; align-items: center; justify-content: center;">
+              <div style="color: #d4b8ff; font-size: 12px; transform: rotate(-45deg);">☽</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Cosmic / Mystical</h3>
+      <p>Deep space dark with purple/violet glow. Stars, celestial symbols, glowing charts. Dramatic and immersive. Feels otherworldly.</p>
+    </div>
+  </div>
+
+</div>

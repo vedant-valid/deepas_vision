@@ -1,0 +1,174 @@
+<h2>Kundli Page — UI Layout</h2>
+<p class="subtitle">Three zones: input form → chart + planet table → AI interpretation. Styled to match Deepa's Vision (maroon + cream palette).</p>
+
+<div class="section" style="margin-top:1.5rem;">
+  <div class="mockup">
+    <div class="mockup-header">deepasvision.com/kundli</div>
+    <div class="mockup-body" style="background:#fffaf5;padding:0;font-family:serif;">
+
+      <!-- Nav bar -->
+      <div style="background:#68020d;color:#fff;padding:10px 24px;font-size:13px;letter-spacing:1px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-weight:bold;">Deepa's Vision</span>
+        <span style="opacity:0.8;font-size:11px;">Home &nbsp;|&nbsp; Services &nbsp;|&nbsp; <u>Kundli</u> &nbsp;|&nbsp; Book &nbsp;|&nbsp; Sign In</span>
+      </div>
+
+      <!-- Page header -->
+      <div style="text-align:center;padding:24px 16px 12px;border-bottom:1px solid #e8d5b0;">
+        <div style="font-size:22px;font-weight:bold;color:#68020d;letter-spacing:1px;">Free Kundli Generator</div>
+        <div style="font-size:12px;color:#888;margin-top:4px;">Sidereal Vedic chart · Lahiri Ayanamsa · North Indian style</div>
+      </div>
+
+      <div style="display:flex;gap:0;min-height:520px;">
+
+        <!-- LEFT: Input Form (fixed width sidebar) -->
+        <div style="width:240px;min-width:240px;border-right:1px solid #e8d5b0;padding:20px 16px;background:#fff8f0;">
+          <div style="font-size:13px;font-weight:bold;color:#68020d;margin-bottom:14px;letter-spacing:0.5px;">BIRTH DETAILS</div>
+
+          <div style="margin-bottom:10px;">
+            <div style="font-size:10px;color:#888;margin-bottom:3px;">FULL NAME (optional)</div>
+            <div style="background:#fff;border:1px solid #ddd;border-radius:3px;padding:6px 8px;font-size:12px;color:#aaa;">Arjun Sharma</div>
+          </div>
+          <div style="margin-bottom:10px;">
+            <div style="font-size:10px;color:#888;margin-bottom:3px;">DATE OF BIRTH</div>
+            <div style="background:#fff;border:1px solid #ddd;border-radius:3px;padding:6px 8px;font-size:12px;color:#555;">15 / 08 / 1990</div>
+          </div>
+          <div style="margin-bottom:10px;">
+            <div style="font-size:10px;color:#888;margin-bottom:3px;">TIME OF BIRTH</div>
+            <div style="background:#fff;border:1px solid #ddd;border-radius:3px;padding:6px 8px;font-size:12px;color:#555;">14 : 30</div>
+          </div>
+          <div style="margin-bottom:16px;">
+            <div style="font-size:10px;color:#888;margin-bottom:3px;">PLACE OF BIRTH</div>
+            <div style="background:#fff;border:1px solid #ddd;border-radius:3px;padding:6px 8px;font-size:12px;color:#555;">Mumbai, India</div>
+            <div style="font-size:9px;color:#aaa;margin-top:3px;">📍 18.9667°N, 72.8333°E · IST</div>
+          </div>
+
+          <button style="width:100%;background:#68020d;color:#fff;border:none;padding:9px;border-radius:4px;font-size:12px;letter-spacing:1px;cursor:pointer;">GENERATE KUNDLI</button>
+
+          <div style="margin-top:20px;padding-top:14px;border-top:1px solid #e8d5b0;">
+            <div style="font-size:10px;color:#888;margin-bottom:8px;">MY SAVED CHARTS</div>
+            <div style="font-size:11px;color:#68020d;padding:5px 0;border-bottom:1px solid #f0e0d0;cursor:pointer;">Arjun Sharma · 15 Aug 1990</div>
+            <div style="font-size:11px;color:#555;padding:5px 0;cursor:pointer;">Priya Devi · 3 Mar 1995</div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Chart + Table + Interpretation -->
+        <div style="flex:1;overflow:hidden;">
+
+          <!-- Chart + Planet Table side by side -->
+          <div style="display:flex;gap:0;border-bottom:1px solid #e8d5b0;">
+
+            <!-- Chart SVG -->
+            <div style="padding:16px;flex:0 0 auto;">
+              <div style="font-size:10px;color:#888;text-align:center;margin-bottom:8px;letter-spacing:0.5px;">KUNDLI — ARJUN SHARMA</div>
+              <svg viewBox="0 0 260 210" width="260" height="210" style="font-family:serif;">
+                <rect x="5" y="5" width="250" height="200" fill="#fffaf5" stroke="#9c6b2e" stroke-width="1.5" rx="2"/>
+                <line x1="5" y1="5" x2="130" y2="105" stroke="#9c6b2e" stroke-width="1"/>
+                <line x1="255" y1="5" x2="130" y2="105" stroke="#9c6b2e" stroke-width="1"/>
+                <line x1="5" y1="205" x2="130" y2="105" stroke="#9c6b2e" stroke-width="1"/>
+                <line x1="255" y1="205" x2="130" y2="105" stroke="#9c6b2e" stroke-width="1"/>
+                <line x1="130" y1="5" x2="5" y2="105" stroke="#9c6b2e" stroke-width="1"/>
+                <line x1="130" y1="5" x2="255" y2="105" stroke="#9c6b2e" stroke-width="1"/>
+                <line x1="130" y1="205" x2="5" y2="105" stroke="#9c6b2e" stroke-width="1"/>
+                <line x1="130" y1="205" x2="255" y2="105" stroke="#9c6b2e" stroke-width="1"/>
+                <!-- H1 top -->
+                <text x="130" y="36" text-anchor="middle" font-size="8" fill="#68020d" font-weight="bold">As · 1</text>
+                <text x="130" y="48" text-anchor="middle" font-size="7" fill="#333">Mo 24°</text>
+                <!-- H2 upper-left -->
+                <text x="65" y="38" text-anchor="middle" font-size="8" fill="#555">2</text>
+                <!-- H3 mid-left upper -->
+                <text x="25" y="72" text-anchor="middle" font-size="8" fill="#555">3</text>
+                <!-- H4 left diamond -->
+                <text x="34" y="105" text-anchor="middle" font-size="8" fill="#555">4</text>
+                <text x="34" y="116" text-anchor="middle" font-size="7" fill="#68020d">Ju</text>
+                <!-- H5 mid-left lower -->
+                <text x="25" y="142" text-anchor="middle" font-size="8" fill="#555">5</text>
+                <!-- H6 lower-left -->
+                <text x="65" y="174" text-anchor="middle" font-size="8" fill="#555">6</text>
+                <text x="65" y="184" text-anchor="middle" font-size="7" fill="#68020d">Ke</text>
+                <!-- H7 bottom -->
+                <text x="130" y="178" text-anchor="middle" font-size="8" fill="#555">7</text>
+                <text x="130" y="189" text-anchor="middle" font-size="7" fill="#68020d">Ma</text>
+                <!-- H8 lower-right -->
+                <text x="195" y="174" text-anchor="middle" font-size="8" fill="#555">8</text>
+                <!-- H9 mid-right lower -->
+                <text x="234" y="142" text-anchor="middle" font-size="8" fill="#555">9</text>
+                <!-- H10 right diamond -->
+                <text x="224" y="105" text-anchor="middle" font-size="8" fill="#555">10</text>
+                <text x="224" y="116" text-anchor="middle" font-size="7" fill="#68020d">Su Me</text>
+                <!-- H11 mid-right upper -->
+                <text x="234" y="72" text-anchor="middle" font-size="8" fill="#555">11</text>
+                <!-- H12 upper-right -->
+                <text x="195" y="38" text-anchor="middle" font-size="8" fill="#555">12</text>
+                <text x="195" y="48" text-anchor="middle" font-size="7" fill="#68020d">Ve Sa</text>
+              </svg>
+            </div>
+
+            <!-- Planet Table -->
+            <div style="flex:1;padding:16px 12px;overflow-y:auto;max-height:230px;">
+              <div style="font-size:10px;color:#888;margin-bottom:8px;letter-spacing:0.5px;">PLANET POSITIONS</div>
+              <table style="width:100%;font-size:10px;border-collapse:collapse;">
+                <thead>
+                  <tr style="background:#f5ede0;color:#68020d;">
+                    <th style="padding:4px 5px;text-align:left;">Planet</th>
+                    <th style="padding:4px 5px;text-align:left;">Sign</th>
+                    <th style="padding:4px 5px;text-align:left;">Deg</th>
+                    <th style="padding:4px 5px;text-align:left;">House</th>
+                    <th style="padding:4px 5px;text-align:left;">Nakshatra</th>
+                    <th style="padding:4px 5px;text-align:left;">Dignity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid #f0e0d0;"><td style="padding:3px 5px;font-weight:bold;color:#68020d;">As</td><td>Cancer</td><td>6°14'</td><td>1</td><td>Pushya P2</td><td style="color:#228b22;">Own</td></tr>
+                  <tr style="background:#faf5ee;border-bottom:1px solid #f0e0d0;"><td style="padding:3px 5px;">Su</td><td>Leo</td><td>29°02'</td><td>2</td><td>U.Phalguni P1</td><td>Neutral</td></tr>
+                  <tr style="border-bottom:1px solid #f0e0d0;"><td style="padding:3px 5px;">Mo</td><td>Cancer</td><td>24°18'</td><td>1</td><td>Ashlesha P4</td><td style="color:#228b22;">Own</td></tr>
+                  <tr style="background:#faf5ee;border-bottom:1px solid #f0e0d0;"><td style="padding:3px 5px;">Ma</td><td>Capricorn</td><td>11°33'</td><td>7</td><td>Shravana P1</td><td style="color:#d4a017;">Exalted</td></tr>
+                  <tr style="border-bottom:1px solid #f0e0d0;"><td style="padding:3px 5px;">Me</td><td>Leo</td><td>18°45'</td><td>2</td><td>P.Phalguni P3</td><td>Neutral</td></tr>
+                  <tr style="background:#faf5ee;border-bottom:1px solid #f0e0d0;"><td style="padding:3px 5px;">Ju</td><td>Libra</td><td>3°21'</td><td>4</td><td>Chitra P1</td><td style="color:#c0392b;">Debilitated</td></tr>
+                  <tr style="border-bottom:1px solid #f0e0d0;"><td style="padding:3px 5px;">Ve</td><td>Pisces</td><td>22°08'</td><td>9</td><td>Revati P2</td><td style="color:#d4a017;">Exalted</td></tr>
+                  <tr style="background:#faf5ee;border-bottom:1px solid #f0e0d0;"><td style="padding:3px 5px;">Sa</td><td>Pisces</td><td>19°54'</td><td>9</td><td>Revati P1</td><td>Neutral</td></tr>
+                  <tr style="border-bottom:1px solid #f0e0d0;"><td style="padding:3px 5px;">Ra</td><td>Aquarius</td><td>14°06'</td><td>8</td><td>Shatabhisha P4</td><td>—</td></tr>
+                  <tr style="background:#faf5ee;"><td style="padding:3px 5px;">Ke</td><td>Leo</td><td>14°06'</td><td>2</td><td>P.Phalguni P1</td><td>—</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- AI Interpretation Panel -->
+          <div style="padding:16px 20px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+              <div style="font-size:10px;color:#888;letter-spacing:0.5px;">AI INTERPRETATION</div>
+              <div style="font-size:9px;background:#f5ede0;color:#68020d;padding:3px 8px;border-radius:10px;">✦ Powered by Claude</div>
+            </div>
+            <div style="font-size:12px;color:#333;line-height:1.7;border-left:3px solid #9c6b2e;padding-left:12px;">
+              <strong style="color:#68020d;">Lagna — Cancer Ascendant</strong><br/>
+              Cancer rising grants you a deeply intuitive and nurturing nature. The Moon as your chart ruler, placed in its own sign in the 1st house, greatly strengthens your emotional intelligence and ability to connect with others.<span style="display:inline-block;width:8px;height:12px;background:#68020d;animation:blink 1s step-end infinite;vertical-align:middle;margin-left:2px;"></span>
+            </div>
+            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="font-size:10px;background:#f5ede0;color:#68020d;padding:3px 10px;border-radius:12px;cursor:pointer;">Lagna</span>
+              <span style="font-size:10px;background:#fff;border:1px solid #ddd;color:#555;padding:3px 10px;border-radius:12px;cursor:pointer;">Moon Sign</span>
+              <span style="font-size:10px;background:#fff;border:1px solid #ddd;color:#555;padding:3px 10px;border-radius:12px;cursor:pointer;">Career</span>
+              <span style="font-size:10px;background:#fff;border:1px solid #ddd;color:#555;padding:3px 10px;border-radius:12px;cursor:pointer;">Relationships</span>
+              <span style="font-size:10px;background:#fff;border:1px solid #ddd;color:#555;padding:3px 10px;border-radius:12px;cursor:pointer;">Health</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Save / Share bar -->
+      <div style="background:#fff8f0;border-top:1px solid #e8d5b0;padding:10px 20px;display:flex;gap:12px;align-items:center;justify-content:flex-end;">
+        <span style="font-size:11px;color:#aaa;flex:1;">Sign in to save this chart to your profile</span>
+        <button style="background:#fff;border:1px solid #68020d;color:#68020d;padding:6px 14px;border-radius:3px;font-size:11px;cursor:pointer;">Save Chart</button>
+        <button style="background:#68020d;color:#fff;border:none;padding:6px 14px;border-radius:3px;font-size:11px;cursor:pointer;">Share</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:1.5rem;text-align:center;">
+  <p class="subtitle">Does this layout and flow look right? Confirm to move to the next section.</p>
+</div>
+
+<style>
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+</style>

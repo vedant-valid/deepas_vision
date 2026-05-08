@@ -14,7 +14,7 @@ const Navbar = () => {
     { name: "HOME",     href: "#home"     },
     { name: "ABOUT",    href: "#about"    },
     { name: "SERVICES", href: "#samadhan" },
-    { name: "KUNDLI",   href: "#kundli"   },
+    { name: "KUNDLI",   href: "/kundli"   },
     { name: "FAQS",     href: "#faqs"     },
     { name: "CONTACT",  href: "#contact"  },
   ];
@@ -78,6 +78,14 @@ const Navbar = () => {
                   >
                     {item.name}
                   </button>
+                ) : item.href.startsWith("/") ? (
+                  <Link
+                    href={item.href}
+                    className="relative z-10"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
                 ) : (
                   <a
                     href={item.href}

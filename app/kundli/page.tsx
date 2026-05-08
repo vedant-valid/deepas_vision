@@ -17,16 +17,16 @@ export default async function KundliPage() {
 
   return (
     <div className="min-h-screen bg-[#fffaf5]">
-      <header className="bg-[#68020d] px-6 py-4 flex items-center justify-between shadow-md">
+      <header className="bg-[#68020d] px-6 py-4 grid grid-cols-3 items-center shadow-md">
         <Link
           href="/"
-          className="text-white/60 text-[11px] tracking-widest uppercase hover:text-white transition-colors"
+          className="text-white/60 text-[11px] tracking-widest uppercase hover:text-white transition-colors justify-self-start"
           style={{ fontFamily: 'var(--font-cinzel)' }}
         >
           ← Home
         </Link>
 
-        <div className="text-center flex-1">
+        <div className="text-center">
           <h1
             className="text-white text-base tracking-[5px] uppercase font-normal"
             style={{ fontFamily: 'var(--font-cinzel)' }}
@@ -38,7 +38,9 @@ export default async function KundliPage() {
           </p>
         </div>
 
-        <AuthButton isAuthenticated={isAuthenticated} email={user?.email} />
+        <div className="justify-self-end">
+          <AuthButton isAuthenticated={isAuthenticated} email={user?.email} />
+        </div>
       </header>
 
       <KundliPageClient isAuthenticated={isAuthenticated} savedCharts={savedCharts} />
