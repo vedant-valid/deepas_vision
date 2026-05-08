@@ -112,8 +112,8 @@ export default function DeepasVisionWebsite() {
         <Navbar />
         <main className="flex flex-col md:flex-row mt-10 md:mt-20 items-center">
           <div className="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
-            <p className="text-sm text-red-800/50 uppercase tracking-[4px] mb-3 font-medium">
-              Vedic Astrology · Numerology · Lal Kitab
+            <p className="text-sm text-red-800/60 tracking-wide mb-3 font-medium italic">
+              &ldquo;It&apos;s not too late — we can still reset.&rdquo;
             </p>
             <h2
               className="text-5xl md:text-7xl text-red-800 mb-5 md:mb-8 leading-tight font-bold"
