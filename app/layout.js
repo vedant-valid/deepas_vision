@@ -26,7 +26,29 @@ const playfair = Playfair_Display({
 
 export const metadata = {
   title: "Deepa's Vision",
-  description: "Deepa's Vision - A platform for personal growth and self-discovery.",
+  description: "Deepa's Vision — Vedic astrology, numerology & Lal Kitab guidance for career, relationships, and life.",
+  metadataBase: new URL('https://deepas-vision.vercel.app'),
+  openGraph: {
+    title: "Deepa's Vision",
+    description: "Vedic astrology, numerology & Lal Kitab guidance for career, relationships, and life.",
+    url: 'https://deepas-vision.vercel.app',
+    siteName: "Deepa's Vision",
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: "Deepa's Vision — Vedic Astrology Platform",
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Deepa's Vision",
+    description: "Vedic astrology, numerology & Lal Kitab guidance for career, relationships, and life.",
+    images: ['/og-image.png'],
+  },
 };
 
 export default function RootLayout({ children }) {
