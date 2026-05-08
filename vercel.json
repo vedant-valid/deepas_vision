@@ -1,5 +1,4 @@
 {
-  "installCommand": "python3 -m pip install setuptools --quiet && npm install",
   "build": {
     "env": {
       "NODE_VERSION": "20"
