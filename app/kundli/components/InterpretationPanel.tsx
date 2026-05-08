@@ -20,6 +20,7 @@ export default function InterpretationPanel({ chartId, isAuthenticated }: Props)
 
   const { completion, complete, isLoading, error, setCompletion } = useCompletion({
     api: '/api/kundli/interpret',
+    streamProtocol: 'text',
     onFinish: (_prompt, completion) => {
       setTopicResults(prev => ({ ...prev, [activeTopic]: completion }))
     },
