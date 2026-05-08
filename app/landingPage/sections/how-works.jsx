@@ -1,167 +1,154 @@
 "use client"
-import { useState, useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import SectionDivider from "@/components/SectionDivider";
 import { UserCheck, BookOpenCheck, BrainCircuit, Map } from 'lucide-react';
 
-// Extracted to its own component so useTransform is at top level (Rules of Hooks)
-function StickyCard({ card, scrollYProgress, index, total }) {
-    const start = index / total;
-    const end = (index + 1) / total;
-    const cardY = useTransform(scrollYProgress, [start, end], [100, 0]);
+const CARDS = [
+  {
+    number: "01",
+    title: "1:1 Strategic Session",
+    content: "A calm, focused discussion that works on the formula — Session = Strategy + Direction – (Chaos × Doubts). No guesswork, just clarity.",
+    icon: <UserCheck className="w-7 h-7" />,
+    tag: "Foundation",
+  },
+  {
+    number: "02",
+    title: "Astrology as a Science",
+    content: "Answering your unlimited questions with proper logic & methods. Astrology is not a ₹5/min thing — it is a science of patterns and time.",
+    icon: <BookOpenCheck className="w-7 h-7" />,
+    tag: "Insight",
+  },
+  {
+    number: "03",
+    title: "The दीक्षा Process",
+    content: "Deep study of your 9 charts + Numerology + Time periods. Every layer of your life analysed with precision and care.",
+    icon: <BrainCircuit className="w-7 h-7" />,
+    tag: "Analysis",
+  },
+  {
+    number: "04",
+    title: "From Possibility to Plan",
+    content: "After a fulfilled session we look among all choices, opportunities & fields and map your most aligned path forward.",
+    icon: <Map className="w-7 h-7" />,
+    tag: "Direction",
+  },
+];
 
-    return (
-        <motion.div
-            className="sticky top-0 h-screen flex items-center justify-center"
-            style={{ y: cardY }}
-        >
-            <div className="bg-white p-8 rounded-xl shadow-xl border border-gray-200 w-4/5 h-[50%] flex flex-col justify-center hover:shadow-2xl hover:border-red-300 transition-all duration-300">
-                <div className="text-center">
-                    <div className="mb-4 flex justify-center">{card.icon}</div>
-                    <h3 className="text-2xl font-bold mb-3 text-red-800">{card.title}</h3>
-                    <p className="text-gray-700 mb-6 max-w-lg mx-auto">{card.content}</p>
-                    <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="bg-red-800 hover:bg-red-700 text-white px-6 py-2 rounded-md font-medium transition-colors duration-300"
-                    >
-                        Learn More
-                    </motion.button>
-                </div>
-            </div>
-        </motion.div>
-    );
+function StickyCard({ card, scrollYProgress, index, total }) {
+  const start = index / total;
+  const end   = (index + 1) / total;
+  const y     = useTransform(scrollYProgress, [start, end], [60, 0]);
+  const opacity = useTransform(scrollYProgress, [start, Math.min(end + 0.05, 1)], [0.4, 1]);
+
+  return (
+    <motion.div
+      className="sticky top-24 mb-6"
+      style={{ y, opacity }}
+    >
+      <div className="bg-white rounded-2xl shadow-lg border border-red-100 overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        {/* Card header strip */}
+        <div className="bg-gradient-to-r from-red-800 to-red-700 px-6 py-4 flex items-center justify-between">
+          <span className="text-white/50 text-4xl font-black leading-none">{card.number}</span>
+          <span className="text-white/80 text-xs tracking-[3px] uppercase">{card.tag}</span>
+          <div className="text-white/70">{card.icon}</div>
+        </div>
+
+        {/* Card body */}
+        <div className="px-6 py-6">
+          <h3 className="text-xl font-bold text-red-800 mb-3">{card.title}</h3>
+          <p className="text-gray-600 leading-relaxed">{card.content}</p>
+
+          {/* Decorative dots */}
+          <div className="flex gap-1.5 mt-6">
+            {CARDS.map((_, i) => (
+              <div key={i} className={`h-1.5 rounded-full transition-all ${i === index ? 'w-6 bg-red-800' : 'w-1.5 bg-red-200'}`} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
 }
 
-export default function StickyLayout() {
-    const [cards] = useState([
-        {
-            id: 1,
-            title: '1:1 Strategic Session',
-            content: 'By sitting calmly in a 1-1 discussion which वर्क्स on the formula — Session = Strategy + Direction – (Chaos × Doubts).',
-            icon: <UserCheck className="w-6 h-6 text-red-800" />,
-        },
-        {
-            id: 2,
-            title: 'Astrology as a Science',
-            content: 'Answering your unlimited questions + queries with proper logics & मेथड्स. As astrology is not a ₹5/min thing, it\'s science.',
-            icon: <BookOpenCheck className="w-6 h-6 text-red-800" />,
-        },
-        {
-            id: 3,
-            title: 'The दीक्षा Process',
-            content: 'The दीक्षा involves — Study of your \'9\' Charts + Numerology + Time periods.',
-            icon: <BrainCircuit className="w-6 h-6 text-red-800" />,
-        },
-        {
-            id: 4,
-            title: 'From Possibility to Plan',
-            content: 'After the discussion and a satisfied session, we will लुक among all these choices, opportunities & fields.',
-            icon: <Map className="w-6 h-6 text-red-800" />,
-        },
-    ]);
+export default function HowWorks() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, -60]);
 
-    const containerRef = useRef(null);
-    const { scrollYProgress } = useScroll({ target: containerRef });
-    const titleY = useTransform(scrollYProgress, [0, 1], [0, -80]);
-    const subtitleY = useTransform(scrollYProgress, [0, 1], [0, -40]);
-    const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  return (
+    <>
+      <div id="about"><SectionDivider /></div>
 
-    useEffect(() => {
-        const animateElements = document.querySelectorAll('.animate-in');
-        animateElements.forEach((el, index) => {
-            setTimeout(() => { el.classList.add('animated'); }, index * 120);
-        });
-    }, []);
+      <div ref={containerRef} className="relative bg-[#fffaf5]">
 
-    return (
-        <>
-        <div id="about">
-            <SectionDivider />
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+          style={{ backgroundImage: "radial-gradient(#68020d 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
+
+        <div className="max-w-6xl mx-auto px-6 py-20 flex flex-col md:flex-row gap-16">
+
+          {/* Left sticky panel */}
+          <div className="w-full md:w-2/5 md:sticky md:top-24 md:self-start">
+            <motion.div style={{ y: titleY }}>
+
+              {/* Label */}
+              <p className="text-xs text-red-800/50 uppercase tracking-[4px] mb-4">The Process</p>
+
+              {/* Heading */}
+              <h2 className="text-4xl md:text-5xl font-bold text-red-800 leading-tight mb-6">
+                How Deepa&apos;s<br />
+                <span className="italic font-normal">shiksha</span> works?
+              </h2>
+
+              {/* Description */}
+              <p className="text-gray-600 leading-relaxed mb-6">
+                With years of experience in{" "}
+                <span className="font-semibold text-red-700">वैदिक Astrology</span>,{" "}
+                <span className="font-semibold text-red-700">Numerology</span>, and{" "}
+                <span className="font-semibold text-red-700">Lal Kitab</span>, Deepa&apos;s Vision offers
+                कर्मिक उपाय and guides you toward the right करियर and जीवन मार्ग — not through भय, but with clarity.
+              </p>
+
+              {/* Quote block */}
+              <div className="border-l-4 border-red-700 pl-4 bg-red-50 py-3 pr-4 rounded-r-lg mb-8">
+                <p className="text-red-900 italic text-sm leading-relaxed">
+                  &ldquo;Simply we will tell you → What you can do better than others, how you can outsmart the race &amp; Troubles&rdquo;
+                </p>
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+                className="bg-red-800 hover:bg-red-700 text-white px-7 py-3 rounded-lg font-medium shadow-md transition-colors duration-200"
+              >
+                Discover Now
+              </motion.button>
+
+              {/* Step counter */}
+              <div className="mt-10 hidden md:flex items-center gap-3">
+                <div className="h-px flex-1 bg-red-200" />
+                <span className="text-red-800/40 text-xs tracking-widest uppercase">4 steps</span>
+                <div className="h-px flex-1 bg-red-200" />
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right scrolling cards */}
+          <div className="w-full md:w-3/5 flex flex-col gap-6">
+            {CARDS.map((card, i) => (
+              <StickyCard
+                key={card.number}
+                card={card}
+                scrollYProgress={scrollYProgress}
+                index={i}
+                total={CARDS.length}
+              />
+            ))}
+          </div>
+
         </div>
-        <div className="flex relative flex-col md:flex-row w-full min-h-screen bg-white text-gray-900" ref={containerRef}>
-
-            {/* Left sticky panel */}
-            <div className="w-full md:w-2/5 md:sticky md:top-0 h-auto md:h-screen flex items-center justify-center py-8 md:py-0">
-                <div className="relative w-full h-full flex items-center justify-center px-4 md:px-8">
-                    <motion.div
-                        className="absolute w-80 h-80 rounded-full bg-red-200 opacity-20 blur-2xl hidden md:block"
-                        style={{ y: backgroundY, x: -60 }}
-                    />
-                    <motion.div
-                        className="absolute w-52 h-52 rounded-full bg-red-300 opacity-20 blur-2xl hidden md:block"
-                        style={{ y: backgroundY, x: 100 }}
-                    />
-
-                    <div className="relative z-10 text-center max-w-md">
-                        <motion.div style={{ y: titleY }}>
-                            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-600 animate-in opacity-0">
-                                How Deepa&apos;s shiksha works?
-                            </h1>
-                        </motion.div>
-
-                        <motion.div style={{ y: subtitleY }} className="space-y-6">
-                            <div className="text-left space-y-4 animate-in opacity-0">
-                                <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
-                                    With years of experience in{' '}
-                                    <span className="font-semibold text-red-700">वैदिक Astrology</span>,{' '}
-                                    <span className="font-semibold text-red-700">Numerology</span>, and{' '}
-                                    <span className="font-semibold text-red-700">Lal Kitab</span>, Deepa&apos;s Vision offers{' '}
-                                    <span className="font-semibold">कर्मिक उपाय</span> and guides you toward the right{' '}
-                                    <span className="font-semibold">करियर</span> and{' '}
-                                    <span className="font-semibold">जीवन मार्ग</span> — not through{' '}
-                                    <span className="font-semibold">भय</span>, but with clarity.
-                                </p>
-
-                                <div className="bg-red-50 border-l-4 border-red-600 p-4 rounded-r">
-                                    <p className="text-red-900 font-bold italic text-base md:text-lg">
-                                        &ldquo;Simply we will tell you → What you can do better than others, हाउ you can outsmart the race & Troubles&rdquo;
-                                    </p>
-                                </div>
-                            </div>
-
-                            <button className="bg-gradient-to-r from-red-800 to-red-700 hover:from-red-700 hover:to-red-600 text-white px-6 py-3 md:px-8 md:py-3 rounded-lg font-medium shadow-md animate-in opacity-0 transition-all duration-300">
-                                Discover Now
-                            </button>
-                        </motion.div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Right scrolling cards — desktop */}
-            <div className="w-full md:w-3/5">
-                <div className="relative hidden md:block h-[500vh]">
-                    {cards.map((card, index) => (
-                        <StickyCard
-                            key={card.id}
-                            card={card}
-                            scrollYProgress={scrollYProgress}
-                            index={index}
-                            total={cards.length}
-                        />
-                    ))}
-                </div>
-
-                {/* Mobile cards */}
-                <div className="block md:hidden px-4 space-y-8 py-6">
-                    {cards.map(card => (
-                        <div
-                            key={card.id}
-                            className="bg-gradient-to-br from-red-50 via-white to-red-100 p-6 rounded-xl shadow-md border border-gray-200 transition hover:shadow-lg"
-                        >
-                            <div className="text-center">
-                                <div className="mb-2 flex justify-center">{card.icon}</div>
-                                <h3 className="text-xl font-semibold mb-2 text-red-800">{card.title}</h3>
-                                <p className="text-gray-700 mb-4">{card.content}</p>
-                                <button className="bg-red-800 hover:bg-red-700 text-white px-5 py-2 rounded-md text-sm transition-colors">
-                                    Learn More
-                                </button>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-        </>
-    );
+      </div>
+    </>
+  );
 }
