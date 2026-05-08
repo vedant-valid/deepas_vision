@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.75",
+    "@ai-sdk/google": "^3.0.70",
     "@ai-sdk/react": "^3.0.177",
     "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.105.3",

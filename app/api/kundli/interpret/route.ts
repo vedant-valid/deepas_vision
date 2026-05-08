@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 import { streamText } from 'ai'
-import { anthropic } from '@ai-sdk/anthropic'
+import { google } from '@ai-sdk/google'
 import { createClient } from '@/lib/supabase/server'
 import { buildSystemPrompt, buildUserPrompt } from '@/lib/astro/interpret'
 import type { InterpretationTopic, KundliData } from '@/lib/astro/types'
@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
 
   const kundliData = chart.kundli_data as KundliData
   const result = streamText({
-    model: anthropic('claude-sonnet-4-6'),
+    model: google('gemini-2.0-flash'),
     system: buildSystemPrompt(),
     prompt: buildUserPrompt(kundliData, topic),
     onFinish: async ({ text }) => {
@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
         chart_id: chartId,
         topic,
         content: text,
-        model: 'claude-sonnet-4-6',
+        model: 'gemini-2.0-flash',
       }, { onConflict: 'chart_id,topic' })
     },
   })
