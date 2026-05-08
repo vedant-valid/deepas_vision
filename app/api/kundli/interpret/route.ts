@@ -46,7 +46,8 @@ export async function POST(req: NextRequest) {
     const encoder = new TextEncoder()
     const stream = new ReadableStream({
       start(controller) {
-        controller.enqueue(encoder.encode(cached.content))
+        // Data stream format: type 0 = text chunk
+        controller.enqueue(encoder.encode(`0:${JSON.stringify(cached.content)}\n`))
         controller.close()
       },
     })
@@ -68,5 +69,7 @@ export async function POST(req: NextRequest) {
     },
   })
 
-  return result.toTextStreamResponse()
+  return result.toDataStreamResponse({
+    getErrorMessage: (error) => error instanceof Error ? error.message : 'Failed to generate interpretation',
+  })
 }
