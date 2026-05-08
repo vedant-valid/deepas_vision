@@ -114,7 +114,7 @@ export default function DeepasVisionWebsite() {
           <div className="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
 
             {/* Whisper hook */}
-            <p className="text-sm text-red-800/50 italic mb-6 tracking-wide">
+            <p className="text-sm text-red-800 italic mb-6 tracking-wide">
               &ldquo;It&apos;s not too late — we can still reset.&rdquo;
             </p>
 
