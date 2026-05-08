@@ -40,36 +40,35 @@ const Booking = () => {
         .talk-anim { animation: slideInRight 1s ease 0.35s forwards; opacity: 0; }
       `}</style>
 
-      <section id="contact" className="relative w-full h-screen overflow-hidden text-white">
+      <section id="contact" className="relative w-full bg-white overflow-hidden">
 
         {/* Animated glowing orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
-          <div style={orbStyle({ top: "8%",  left: "12%",  width: 320, height: 320, background: "radial-gradient(circle, rgba(156,32,32,0.11) 0%, transparent 70%)", animation: "orbFloat1 8s ease-in-out infinite" })} />
-          <div style={orbStyle({ bottom: "12%", right: "8%",  width: 260, height: 260, background: "radial-gradient(circle, rgba(156,32,32,0.09) 0%, transparent 70%)", animation: "orbFloat2 10s ease-in-out infinite" })} />
-          <div style={orbStyle({ top: "42%", right: "28%", width: 180, height: 180, background: "radial-gradient(circle, rgba(156,32,32,0.07) 0%, transparent 70%)", animation: "orbFloat3 6s ease-in-out infinite" })} />
-          <div style={orbStyle({ bottom: "8%", left: "33%",  width: 140, height: 140, background: "radial-gradient(circle, rgba(156,32,32,0.08) 0%, transparent 70%)", animation: "orbFloat1 7s ease-in-out 2s infinite" })} />
+          <div style={orbStyle({ top: "5%",  left: "5%",   width: 300, height: 300, background: "radial-gradient(circle, rgba(156,32,32,0.10) 0%, transparent 70%)", animation: "orbFloat1 8s ease-in-out infinite" })} />
+          <div style={orbStyle({ bottom: "5%", right: "5%", width: 260, height: 260, background: "radial-gradient(circle, rgba(156,32,32,0.09) 0%, transparent 70%)", animation: "orbFloat2 10s ease-in-out infinite" })} />
+          <div style={orbStyle({ top: "40%", right: "20%", width: 180, height: 180, background: "radial-gradient(circle, rgba(156,32,32,0.06) 0%, transparent 70%)", animation: "orbFloat3 6s ease-in-out infinite" })} />
+          <div style={orbStyle({ bottom: "20%", left: "25%", width: 140, height: 140, background: "radial-gradient(circle, rgba(156,32,32,0.07) 0%, transparent 70%)", animation: "orbFloat1 7s ease-in-out 2s infinite" })} />
         </div>
 
-        {/* Top Half */}
-        <div className="absolute top-0 left-0 w-full h-1/2 bg-white flex items-center justify-start px-8 md:px-20" style={{ zIndex: 1 }}>
-          <h2 className="lets-anim text-4xl absolute bottom-0 md:text-[6.6vw] font-bold text-red-800">
+        {/* Heading */}
+        <div className="relative flex items-baseline justify-between px-10 md:px-20 pt-16 pb-6" style={{ zIndex: 1 }}>
+          <h2 className="lets-anim text-5xl md:text-[7vw] font-bold text-red-800 leading-none">
             Let&apos;s
           </h2>
-        </div>
-
-        {/* Bottom Half */}
-        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-red-300/40 to-white flex items-end justify-end px-8 md:px-20 pb-10" style={{ zIndex: 1 }}>
-          <p className="talk-anim text-4xl absolute top-0 md:text-[6.6vw] font-bold text-red-800">
+          <p className="talk-anim text-5xl md:text-[7vw] font-bold text-red-800 leading-none">
             Talk.
           </p>
         </div>
 
+        {/* Divider line */}
+        <div className="relative mx-10 md:mx-20 h-px bg-gradient-to-r from-transparent via-red-300 to-transparent" style={{ zIndex: 1 }} />
+
         {/* TidyCal Widget */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[70%] z-10">
+        <div className="relative w-full px-4 md:px-10 py-8" style={{ zIndex: 2 }}>
           <div
-            className="tidycal-embed"
+            className="tidycal-embed mx-auto"
             data-path="vedantwork6"
-            style={{ minWidth: "320px", height: "700px" }}
+            style={{ minWidth: "320px", maxWidth: "900px" }}
           />
         </div>
       </section>
