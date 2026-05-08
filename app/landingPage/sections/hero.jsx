@@ -117,7 +117,7 @@ export default function DeepasVisionWebsite() {
             </p>
             <h2
               className="text-5xl md:text-7xl text-red-800 mb-5 md:mb-8 leading-tight font-bold"
-              style={{ fontFamily: 'var(--font-cinzel)' }}
+              style={{ fontFamily: 'var(--font-playfair)' }}
             >
               Stuck in a{" "}
               <span className="min-w-[11ch] text-left text-red-600">

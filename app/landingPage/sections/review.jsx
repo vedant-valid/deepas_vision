@@ -100,7 +100,7 @@ export default function TestimonialsSection() {
           >
             <p className="text-xs text-[#68020d]/40 uppercase tracking-[4px] mb-3">Client Experiences</p>
             <h2 className="text-4xl md:text-5xl font-bold text-[#68020d]"
-              style={{ fontFamily: "var(--font-cinzel)" }}>
+              style={{ fontFamily: "var(--font-playfair)" }}>
               Life Changing Stories
             </h2>
             <div className="flex justify-center mt-4">

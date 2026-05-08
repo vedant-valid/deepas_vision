@@ -31,7 +31,7 @@ export default function KundliChart({ data, name }: Props) {
     <div className="flex flex-col items-center gap-3">
       <p
         className="text-[11px] text-[#68020d] uppercase tracking-[3px] pb-2 border-b border-[#e8d5c4] w-full text-center font-medium"
-        style={{ fontFamily: 'var(--font-cinzel)' }}
+        style={{ fontFamily: 'var(--font-playfair)' }}
       >
         Birth Chart (Lagna)
       </p>

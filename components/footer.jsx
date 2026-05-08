@@ -47,7 +47,7 @@ const Footer = () => {
             <div>
               <h2
                 className="text-2xl font-bold text-amber-400 tracking-wide mb-0.5"
-                style={{ fontFamily: "var(--font-cinzel)" }}
+                style={{ fontFamily: "var(--font-playfair)" }}
               >
                 Deepa&apos;s Vision
               </h2>

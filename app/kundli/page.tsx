@@ -21,7 +21,7 @@ export default async function KundliPage() {
         <Link
           href="/"
           className="text-white/60 text-[11px] tracking-widest uppercase hover:text-white transition-colors justify-self-start"
-          style={{ fontFamily: 'var(--font-cinzel)' }}
+          style={{ fontFamily: 'var(--font-playfair)' }}
         >
           ← Home
         </Link>
@@ -29,7 +29,7 @@ export default async function KundliPage() {
         <div className="text-center">
           <h1
             className="text-white text-base tracking-[5px] uppercase font-normal"
-            style={{ fontFamily: 'var(--font-cinzel)' }}
+            style={{ fontFamily: 'var(--font-playfair)' }}
           >
             Free Kundli Generator
           </h1>

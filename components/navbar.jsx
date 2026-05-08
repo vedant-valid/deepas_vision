@@ -39,7 +39,7 @@ const Navbar = () => {
           />
           <h1
             className="text-xl md:text-2xl text-amber-900 tracking-wide"
-            style={{ fontFamily: 'var(--font-cinzel)' }}
+            style={{ fontFamily: 'var(--font-playfair)' }}
           >
             Deepa&apos;s Vision
           </h1>

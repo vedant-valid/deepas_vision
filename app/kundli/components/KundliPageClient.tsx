@@ -79,7 +79,7 @@ export default function KundliPageClient({ isAuthenticated, savedCharts }: Props
         <div>
           <p
             className="text-[11px] text-[#68020d] uppercase tracking-[3px] mb-5 pb-2 border-b border-[#e8d5c4] font-medium"
-            style={{ fontFamily: 'var(--font-cinzel)' }}
+            style={{ fontFamily: 'var(--font-playfair)' }}
           >
             Birth Details
           </p>
@@ -90,7 +90,7 @@ export default function KundliPageClient({ isAuthenticated, savedCharts }: Props
           <div>
             <p
               className="text-[11px] text-[#68020d] uppercase tracking-[3px] mb-3 pb-2 border-b border-[#e8d5c4] font-medium"
-              style={{ fontFamily: 'var(--font-cinzel)' }}
+              style={{ fontFamily: 'var(--font-playfair)' }}
             >
               Saved Charts
             </p>
@@ -127,7 +127,7 @@ export default function KundliPageClient({ isAuthenticated, savedCharts }: Props
               <div className="flex-1 min-w-[320px]">
                 <p
                   className="text-[11px] text-[#68020d] uppercase tracking-[3px] mb-4 pb-2 border-b border-[#e8d5c4] font-medium"
-                  style={{ fontFamily: 'var(--font-cinzel)' }}
+                  style={{ fontFamily: 'var(--font-playfair)' }}
                 >
                   Planet Positions
                 </p>
@@ -155,7 +155,7 @@ export default function KundliPageClient({ isAuthenticated, savedCharts }: Props
               <div className="bg-white rounded-sm border border-[#e8d5c4] p-6 shadow-sm">
                 <p
                   className="text-[11px] text-[#68020d] uppercase tracking-[3px] mb-5 pb-2 border-b border-[#e8d5c4] font-medium"
-                  style={{ fontFamily: 'var(--font-cinzel)' }}
+                  style={{ fontFamily: 'var(--font-playfair)' }}
                 >
                   AI Interpretation{' '}
                   <span className="text-[#9c6b2e] normal-case tracking-normal text-[10px]">✦ Claude</span>

@@ -1,4 +1,4 @@
-import { Fondamento, Inter, Cinzel } from 'next/font/google';
+import { Fondamento, Inter, Cinzel, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import Footer from '@/components/footer';
 
@@ -18,6 +18,12 @@ const cinzel = Cinzel({
   variable: '--font-cinzel',
 });
 
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800'],
+  variable: '--font-playfair',
+});
+
 export const metadata = {
   title: "Deepa's Vision",
   description: "Deepa's Vision - A platform for personal growth and self-discovery.",
@@ -26,7 +32,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${fondamento.variable} ${inter.variable} ${cinzel.variable} font-inter antialiased`}>
+      <body className={`${fondamento.variable} ${inter.variable} ${cinzel.variable} ${playfair.variable} font-inter antialiased`}>
         {children}
         <Footer />
       </body>
