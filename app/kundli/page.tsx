@@ -16,31 +16,31 @@ export default async function KundliPage() {
   const savedCharts = isAuthenticated ? await getSavedCharts() : []
 
   return (
-    <div className="min-h-screen bg-[#0d0500]">
-      <header
-        className="relative flex items-center justify-between px-6 py-3 border-b border-[#c9a84c]"
-        style={{ background: 'linear-gradient(90deg, #1a0800 0%, #3d1000 50%, #1a0800 100%)' }}
-      >
-        <div
-          className="absolute bottom-0 left-0 right-0 h-px"
-          style={{ background: 'linear-gradient(90deg, transparent, #c9a84c 30%, #f0d080 50%, #c9a84c 70%, transparent)' }}
-        />
-        <Link href="/" className="text-[#c9a84c]/60 text-[10px] tracking-widest hover:text-[#c9a84c] transition-colors">
-          ← HOME
+    <div className="min-h-screen bg-[#fffaf5]">
+      <header className="bg-[#68020d] px-6 py-4 flex items-center justify-between shadow-md">
+        <Link
+          href="/"
+          className="text-white/60 text-[11px] tracking-widest uppercase hover:text-white transition-colors"
+          style={{ fontFamily: 'var(--font-cinzel)' }}
+        >
+          ← Home
         </Link>
+
         <div className="text-center flex-1">
           <h1
-            className="text-sm tracking-[4px] uppercase text-[#c9a84c]"
+            className="text-white text-base tracking-[5px] uppercase font-normal"
             style={{ fontFamily: 'var(--font-cinzel)' }}
           >
-            ✦ Free Kundli Generator ✦
+            Free Kundli Generator
           </h1>
-          <p className="text-[9px] text-[#c9a84c]/45 mt-1 tracking-[2px]">
-            Sidereal Vedic chart &nbsp;·&nbsp; Lahiri Ayanamsa &nbsp;·&nbsp; North Indian style
+          <p className="text-white/50 text-[10px] tracking-[2px] mt-0.5">
+            Sidereal Vedic chart · Lahiri Ayanamsa · North Indian style
           </p>
         </div>
+
         <AuthButton isAuthenticated={isAuthenticated} email={user?.email} />
       </header>
+
       <KundliPageClient isAuthenticated={isAuthenticated} savedCharts={savedCharts} />
     </div>
   )

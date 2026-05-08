@@ -72,30 +72,34 @@ export default function KundliPageClient({ isAuthenticated, savedCharts }: Props
   }
 
   return (
-    <div className="flex min-h-screen bg-[#0d0500]">
+    <div className="flex min-h-screen bg-[#fffaf5]">
       {/* Sidebar */}
-      <aside
-        className="w-64 min-w-[16rem] border-r border-[#c9a84c]/20 p-5 flex flex-col gap-6"
-        style={{ background: 'rgba(201,168,76,0.03)' }}
-      >
+      <aside className="w-64 min-w-[16rem] bg-white border-r border-[#e8d5c4] p-6 flex flex-col gap-7 shadow-sm">
+
         <div>
-          <p className="text-[8px] text-[#c9a84c] uppercase tracking-[3px] mb-4 text-center border-b border-[#c9a84c]/20 pb-2">
-            — Birth Details —
+          <p
+            className="text-[11px] text-[#68020d] uppercase tracking-[3px] mb-5 pb-2 border-b border-[#e8d5c4] font-medium"
+            style={{ fontFamily: 'var(--font-cinzel)' }}
+          >
+            Birth Details
           </p>
           <BirthDetailsForm onResult={(r) => { setResult(r); setSavedChartId(null); setSaveMsg(null) }} />
         </div>
 
         {isAuthenticated && savedCharts.length > 0 && (
           <div>
-            <p className="text-[8px] text-[#c9a84c] uppercase tracking-[3px] mb-3 text-center border-b border-[#c9a84c]/20 pb-2">
-              — Saved Charts —
+            <p
+              className="text-[11px] text-[#68020d] uppercase tracking-[3px] mb-3 pb-2 border-b border-[#e8d5c4] font-medium"
+              style={{ fontFamily: 'var(--font-cinzel)' }}
+            >
+              Saved Charts
             </p>
             <ul className="flex flex-col gap-1">
               {savedCharts.map(chart => (
                 <li key={chart.id}>
                   <button
                     onClick={() => loadSavedChart(chart)}
-                    className="w-full text-left text-[10px] text-[#c9a84c]/70 hover:text-[#c9a84c] py-1.5 px-2 border border-[#c9a84c]/10 hover:border-[#c9a84c]/40 transition-colors"
+                    className="w-full text-left text-[12px] text-[#68020d]/70 hover:text-[#68020d] hover:bg-[#fdf0eb] py-2 px-3 rounded transition-colors"
                   >
                     {chart.name ?? 'Unnamed'} · {chart.dob}
                   </button>
@@ -107,54 +111,60 @@ export default function KundliPageClient({ isAuthenticated, savedCharts }: Props
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 overflow-auto p-6">
+      <main className="flex-1 overflow-auto p-8 bg-[#fffaf5]">
         {!result ? (
-          <div className="flex items-center justify-center h-full min-h-[60vh]">
-            <p className="text-[#c9a84c]/30 text-sm tracking-widest italic">
+          <div className="flex flex-col items-center justify-center h-full min-h-[60vh] gap-3">
+            <div className="w-12 h-px bg-[#68020d]/20" />
+            <p className="text-[#68020d]/40 text-sm tracking-widest">
               Enter birth details to generate a Kundli
             </p>
+            <div className="w-12 h-px bg-[#68020d]/20" />
           </div>
         ) : (
-          <div className="flex flex-col gap-6">
-            <div className="flex flex-wrap gap-6">
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-wrap gap-8">
               <KundliChart data={result.kundliData} name={result.name} />
               <div className="flex-1 min-w-[320px]">
-                <p className="text-[8px] text-[#c9a84c] uppercase tracking-[3px] mb-3 border-b border-[#c9a84c]/20 pb-2">
-                  — Planet Positions —
+                <p
+                  className="text-[11px] text-[#68020d] uppercase tracking-[3px] mb-4 pb-2 border-b border-[#e8d5c4] font-medium"
+                  style={{ fontFamily: 'var(--font-cinzel)' }}
+                >
+                  Planet Positions
                 </p>
                 <PlanetTable data={result.kundliData} />
               </div>
             </div>
 
-            <div className="flex items-center gap-4 py-3 border-t border-[#c9a84c]/15">
+            <div className="flex items-center gap-4 py-4 border-t border-[#e8d5c4]">
               {isAuthenticated && !savedChartId && (
                 <button
                   onClick={handleSave}
                   disabled={saving}
-                  className="border border-[#c9a84c]/60 text-[#c9a84c] px-5 py-2 text-[8px] tracking-[2px] uppercase hover:border-[#c9a84c] hover:bg-[#c9a84c]/10 disabled:opacity-50 transition-colors"
+                  className="bg-[#68020d] hover:bg-[#4a0109] text-white text-[12px] tracking-wider px-5 py-2.5 rounded-sm uppercase transition-colors disabled:opacity-50"
                 >
-                  {saving ? 'Saving...' : '✦ Save Chart'}
+                  {saving ? 'Saving...' : 'Save Chart'}
                 </button>
               )}
               {!isAuthenticated && (
-                <p className="text-[10px] text-[#c9a84c]/35 italic">Sign in to save this chart</p>
+                <p className="text-[12px] text-[#68020d]/50 italic">Sign in to save this chart</p>
               )}
-              {saveMsg && <p className="text-[10px] text-[#c9a84c]">{saveMsg}</p>}
+              {saveMsg && <p className="text-[12px] text-emerald-700 font-medium">{saveMsg}</p>}
             </div>
 
             {savedChartId && (
-              <div
-                className="border border-[#c9a84c]/20 p-5"
-                style={{ background: 'rgba(201,168,76,0.02)' }}
-              >
-                <p className="text-[8px] text-[#c9a84c] uppercase tracking-[3px] mb-4 border-b border-[#c9a84c]/20 pb-2">
-                  — AI Interpretation &nbsp;<span className="text-[#c9a84c]/50 normal-case tracking-normal">✦ Claude</span> —
+              <div className="bg-white rounded-sm border border-[#e8d5c4] p-6 shadow-sm">
+                <p
+                  className="text-[11px] text-[#68020d] uppercase tracking-[3px] mb-5 pb-2 border-b border-[#e8d5c4] font-medium"
+                  style={{ fontFamily: 'var(--font-cinzel)' }}
+                >
+                  AI Interpretation{' '}
+                  <span className="text-[#9c6b2e] normal-case tracking-normal text-[10px]">✦ Claude</span>
                 </p>
                 <InterpretationPanel chartId={savedChartId} isAuthenticated={isAuthenticated} />
               </div>
             )}
             {!savedChartId && isAuthenticated && (
-              <p className="text-[10px] text-[#c9a84c]/30 italic">Save the chart to unlock AI interpretation</p>
+              <p className="text-[12px] text-[#68020d]/40 italic">Save the chart to unlock AI interpretation</p>
             )}
           </div>
         )}

@@ -44,35 +44,31 @@ export default function BirthDetailsForm({ onResult }: Props) {
     }
   }
 
-  const inputStyle = { background: 'rgba(255,255,255,0.03)' }
   const inputClass =
-    'w-full text-[11px] text-[#e8d5a0] px-3 py-2 border border-[#c9a84c]/25 outline-none focus:border-[#c9a84c]/60 transition-colors font-serif placeholder:text-[#c9a84c]/20'
-  const labelClass = 'block text-[8px] text-[#c9a84c]/55 uppercase tracking-[2px] mb-1'
+    'w-full bg-[#fffaf5] border border-[#dcc9b8] rounded-sm px-3 py-2.5 text-[13px] text-[#3d1a0a] placeholder:text-[#b89a87] focus:outline-none focus:border-[#68020d] focus:ring-1 focus:ring-[#68020d]/20 transition-all'
+  const labelClass = 'block text-[11px] text-[#68020d] font-medium uppercase tracking-wider mb-1.5'
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
-        <label className={labelClass}>Full Name (optional)</label>
-        <input className={inputClass} style={inputStyle} value={name} onChange={e => setName(e.target.value)} placeholder="e.g. Arjun Sharma" />
+        <label className={labelClass}>Full Name</label>
+        <input className={inputClass} value={name} onChange={e => setName(e.target.value)} placeholder="e.g. Arjun Sharma" />
       </div>
       <div>
         <label className={labelClass}>Date of Birth</label>
-        <input className={inputClass} style={inputStyle} type="date" value={dob} onChange={e => setDob(e.target.value)} required />
+        <input className={inputClass} type="date" value={dob} onChange={e => setDob(e.target.value)} required />
       </div>
       <div>
-        <label className={labelClass}>Time of Birth (24h)</label>
-        <input className={inputClass} style={inputStyle} type="time" value={tob} onChange={e => setTob(e.target.value)} required />
+        <label className={labelClass}>Time of Birth</label>
+        <input className={inputClass} type="time" value={tob} onChange={e => setTob(e.target.value)} required />
       </div>
       <div>
         <label className={labelClass}>Place of Birth</label>
-        <input className={inputClass} style={inputStyle} value={place} onChange={e => setPlace(e.target.value)} placeholder="e.g. Mumbai, India" required />
+        <input className={inputClass} value={place} onChange={e => setPlace(e.target.value)} placeholder="e.g. Mumbai, India" required />
       </div>
 
       {error && (
-        <p
-          className="text-[10px] text-[#e07050] border border-[#e07050]/30 px-3 py-2"
-          style={{ background: 'rgba(224,112,80,0.05)' }}
-        >
+        <p className="text-[12px] text-red-700 bg-red-50 border border-red-200 px-3 py-2 rounded-sm">
           {error}
         </p>
       )}
@@ -80,12 +76,9 @@ export default function BirthDetailsForm({ onResult }: Props) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full py-2.5 text-[8px] tracking-[3px] uppercase font-bold font-serif disabled:opacity-60 transition-opacity relative"
-        style={{ background: 'linear-gradient(90deg, #8b1a00, #c9a84c 50%, #8b1a00)', color: '#0d0500' }}
+        className="w-full bg-[#68020d] hover:bg-[#4a0109] text-white py-3 text-[12px] tracking-widest uppercase rounded-sm font-medium disabled:opacity-60 transition-colors mt-1"
       >
-        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[8px]">✦</span>
         {loading ? 'Calculating...' : 'Generate Kundli'}
-        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[8px]">✦</span>
       </button>
     </form>
   )

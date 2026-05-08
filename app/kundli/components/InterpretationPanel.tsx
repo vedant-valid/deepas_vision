@@ -38,17 +38,17 @@ export default function InterpretationPanel({ chartId, isAuthenticated }: Props)
 
   return (
     <div className="flex flex-col gap-4">
+      {/* Topic tabs */}
       <div className="flex flex-wrap gap-2">
         {TOPICS.map(t => (
           <button
             key={t.id}
             onClick={() => handleTopicChange(t.id)}
-            className={`px-3 py-1.5 text-[8px] tracking-[2px] uppercase transition-colors border ${
+            className={`px-4 py-1.5 text-[12px] tracking-wide rounded-sm transition-colors ${
               activeTopic === t.id
-                ? 'border-[#c9a84c]/60 text-[#c9a84c]'
-                : 'border-[#c9a84c]/15 text-[#c9a84c]/40 hover:border-[#c9a84c]/35 hover:text-[#c9a84c]/70'
+                ? 'bg-[#68020d] text-white'
+                : 'bg-[#fdf0eb] text-[#68020d] hover:bg-[#f5e0d5]'
             }`}
-            style={activeTopic === t.id ? { background: 'rgba(201,168,76,0.08)' } : {}}
           >
             {t.label}
             {topicResults[t.id] ? ' ✓' : ''}
@@ -56,28 +56,29 @@ export default function InterpretationPanel({ chartId, isAuthenticated }: Props)
         ))}
       </div>
 
-      <div className="min-h-[120px] border-l-2 border-[#c9a84c]/30 pl-4">
+      {/* Content */}
+      <div className="min-h-[120px] border-l-2 border-[#68020d]/25 pl-4">
         {!isAuthenticated ? (
-          <p className="text-[11px] text-[#c9a84c]/35 italic leading-relaxed">
+          <p className="text-[13px] text-[#68020d]/50 italic leading-relaxed">
             Sign in to generate AI interpretations for your chart.
           </p>
         ) : displayText ? (
-          <p className="text-[11px] text-[#e8d5a0]/70 leading-[1.8] whitespace-pre-wrap italic">{displayText}</p>
+          <p className="text-[13px] text-[#3d1a0a] leading-[1.9] whitespace-pre-wrap">{displayText}</p>
         ) : (
-          <p className="text-[11px] text-[#c9a84c]/30 italic">
-            Click Generate to receive an interpretation for <span className="text-[#c9a84c]/50">{activeTopic}</span>.
+          <p className="text-[13px] text-[#68020d]/40 italic">
+            Click Generate to receive an interpretation for <span className="font-medium text-[#68020d]/60">{activeTopic}</span>.
           </p>
         )}
-        {error && <p className="text-[10px] text-[#e07050] mt-2">{error.message}</p>}
+        {error && <p className="text-[12px] text-red-700 mt-2">{error.message}</p>}
       </div>
 
       {isAuthenticated && (
         <button
           onClick={handleGenerate}
           disabled={isLoading}
-          className="self-start border border-[#c9a84c]/50 text-[#c9a84c] px-5 py-2 text-[8px] tracking-[2px] uppercase hover:border-[#c9a84c] hover:bg-[#c9a84c]/10 disabled:opacity-50 transition-colors"
+          className="self-start bg-[#68020d] hover:bg-[#4a0109] text-white px-5 py-2.5 text-[12px] tracking-wider uppercase rounded-sm disabled:opacity-50 transition-colors"
         >
-          {isLoading ? 'Generating...' : `✦ Generate — ${TOPICS.find(t => t.id === activeTopic)?.label}`}
+          {isLoading ? 'Generating...' : `Generate — ${TOPICS.find(t => t.id === activeTopic)?.label}`}
         </button>
       )}
     </div>

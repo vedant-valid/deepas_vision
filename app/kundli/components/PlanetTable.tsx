@@ -1,10 +1,10 @@
 import type { KundliData } from '@/lib/astro/types'
 
 const DIGNITY_STYLE: Record<string, string> = {
-  exalted:     'text-[#80d080]',
-  debilitated: 'text-[#e07050]',
-  own:         'text-[#80d080]',
-  neutral:     'text-[#c9a84c]/40',
+  exalted:     'text-emerald-700 font-semibold',
+  debilitated: 'text-red-700 font-semibold',
+  own:         'text-emerald-700 font-semibold',
+  neutral:     'text-[#9c7a6a]',
 }
 
 type Props = { data: KundliData }
@@ -16,12 +16,12 @@ export default function PlanetTable({ data }: Props) {
   ]
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full text-xs border-collapse">
+    <div className="overflow-x-auto rounded-sm border border-[#e8d5c4] bg-white shadow-sm">
+      <table className="w-full text-sm border-collapse">
         <thead>
-          <tr style={{ background: 'rgba(201,168,76,0.06)' }}>
+          <tr className="bg-[#68020d]">
             {['Graha', 'Rashi', 'Deg', 'House', 'Nakshatra', 'Pada', 'State'].map(h => (
-              <th key={h} className="text-left p-2 text-[8px] text-[#c9a84c]/60 uppercase tracking-[2px] font-normal border-b border-[#c9a84c]/15">
+              <th key={h} className="text-left px-3 py-2.5 text-[11px] text-white/80 uppercase tracking-wider font-medium">
                 {h}
               </th>
             ))}
@@ -31,21 +31,20 @@ export default function PlanetTable({ data }: Props) {
           {rows.map((row, i) => (
             <tr
               key={'label' in row ? row.label : row.name}
-              className="border-b border-[#c9a84c]/[0.08] hover:bg-[#c9a84c]/5 transition-colors"
-              style={{ background: i % 2 === 0 ? 'transparent' : 'rgba(201,168,76,0.02)' }}
+              className={`border-b border-[#f0e4d8] hover:bg-[#fdf5ee] transition-colors ${i % 2 === 0 ? 'bg-white' : 'bg-[#fffaf5]'}`}
             >
-              <td className="p-2 text-[#e8d5a0] font-medium">
+              <td className="px-3 py-2.5 text-[#3d1a0a] font-semibold text-[13px]">
                 {'label' in row ? row.label : row.name}
                 {'retrograde' in row && row.retrograde && (row as any).name !== 'Rahu' && (row as any).name !== 'Ketu'
-                  ? <span className="ml-1 text-[9px] text-[#e07050]">℞</span>
+                  ? <span className="ml-1 text-[11px] text-orange-600 font-normal">℞</span>
                   : null}
               </td>
-              <td className="p-2 text-[#e8d5a0]/80">{row.sign}</td>
-              <td className="p-2 text-[#e8d5a0]/70">{row.degree.toFixed(2)}°</td>
-              <td className="p-2 text-[#c9a84c]/60">{row.house}</td>
-              <td className="p-2 text-[#e8d5a0]/70">{row.nakshatra}</td>
-              <td className="p-2 text-[#c9a84c]/50">{row.pada}</td>
-              <td className={`p-2 capitalize text-[11px] ${DIGNITY_STYLE[row.dignity]}`}>
+              <td className="px-3 py-2.5 text-[#5c3020] text-[13px]">{row.sign}</td>
+              <td className="px-3 py-2.5 text-[#7a4030] text-[13px]">{row.degree.toFixed(2)}°</td>
+              <td className="px-3 py-2.5 text-[#68020d] font-medium text-[13px]">{row.house}</td>
+              <td className="px-3 py-2.5 text-[#5c3020] text-[13px]">{row.nakshatra}</td>
+              <td className="px-3 py-2.5 text-[#7a4030] text-[13px]">{row.pada}</td>
+              <td className={`px-3 py-2.5 capitalize text-[12px] ${DIGNITY_STYLE[row.dignity]}`}>
                 {row.dignity}
               </td>
             </tr>

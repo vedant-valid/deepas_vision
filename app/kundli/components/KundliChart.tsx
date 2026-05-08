@@ -28,31 +28,37 @@ export default function KundliChart({ data, name }: Props) {
   data.planets.forEach(p => planetsByHouse[p.house]?.push(p))
 
   return (
-    <div className="flex flex-col items-center gap-2">
-      <p className="text-[8px] text-[#c9a84c] uppercase tracking-[3px] border-b border-[#c9a84c]/20 pb-2 w-full text-center">
-        — Birth Chart (Lagna) —
+    <div className="flex flex-col items-center gap-3">
+      <p
+        className="text-[11px] text-[#68020d] uppercase tracking-[3px] pb-2 border-b border-[#e8d5c4] w-full text-center font-medium"
+        style={{ fontFamily: 'var(--font-cinzel)' }}
+      >
+        Birth Chart (Lagna)
       </p>
       {name && (
-        <p className="text-[10px] text-[#c9a84c]/50 tracking-wider uppercase">{name}</p>
+        <p className="text-[12px] text-[#68020d]/60 tracking-wider">{name}</p>
       )}
       <svg
         viewBox="0 0 420 340"
         width="420"
         height="340"
-        className="max-w-full"
-        style={{ fontFamily: 'serif', filter: 'drop-shadow(0 0 12px rgba(201,168,76,0.1))' }}
+        className="max-w-full drop-shadow-sm"
+        style={{ fontFamily: 'Georgia, serif' }}
       >
-        <rect x="10" y="10" width="400" height="320" fill="#0d0500" stroke="#c9a84c" strokeWidth="1.5" rx="2" />
+        {/* Outer border */}
+        <rect x="10" y="10" width="400" height="320" fill="white" stroke="#68020d" strokeWidth="1.5" rx="2" />
 
-        <line x1="10"  y1="10"  x2="210" y2="170" stroke="#c9a84c" strokeWidth="1" strokeOpacity="0.5"/>
-        <line x1="410" y1="10"  x2="210" y2="170" stroke="#c9a84c" strokeWidth="1" strokeOpacity="0.5"/>
-        <line x1="10"  y1="330" x2="210" y2="170" stroke="#c9a84c" strokeWidth="1" strokeOpacity="0.5"/>
-        <line x1="410" y1="330" x2="210" y2="170" stroke="#c9a84c" strokeWidth="1" strokeOpacity="0.5"/>
+        {/* Corner-to-center lines */}
+        <line x1="10"  y1="10"  x2="210" y2="170" stroke="#68020d" strokeWidth="1" strokeOpacity="0.35"/>
+        <line x1="410" y1="10"  x2="210" y2="170" stroke="#68020d" strokeWidth="1" strokeOpacity="0.35"/>
+        <line x1="10"  y1="330" x2="210" y2="170" stroke="#68020d" strokeWidth="1" strokeOpacity="0.35"/>
+        <line x1="410" y1="330" x2="210" y2="170" stroke="#68020d" strokeWidth="1" strokeOpacity="0.35"/>
 
-        <line x1="210" y1="10"  x2="10"  y2="170" stroke="#c9a84c" strokeWidth="1" strokeOpacity="0.5"/>
-        <line x1="210" y1="10"  x2="410" y2="170" stroke="#c9a84c" strokeWidth="1" strokeOpacity="0.5"/>
-        <line x1="210" y1="330" x2="10"  y2="170" stroke="#c9a84c" strokeWidth="1" strokeOpacity="0.5"/>
-        <line x1="210" y1="330" x2="410" y2="170" stroke="#c9a84c" strokeWidth="1" strokeOpacity="0.5"/>
+        {/* Midpoint-to-midpoint lines */}
+        <line x1="210" y1="10"  x2="10"  y2="170" stroke="#68020d" strokeWidth="1" strokeOpacity="0.35"/>
+        <line x1="210" y1="10"  x2="410" y2="170" stroke="#68020d" strokeWidth="1" strokeOpacity="0.35"/>
+        <line x1="210" y1="330" x2="10"  y2="170" stroke="#68020d" strokeWidth="1" strokeOpacity="0.35"/>
+        <line x1="210" y1="330" x2="410" y2="170" stroke="#68020d" strokeWidth="1" strokeOpacity="0.35"/>
 
         {Array.from({ length: 12 }, (_, i) => {
           const house = i + 1
@@ -65,14 +71,14 @@ export default function KundliChart({ data, name }: Props) {
               <text
                 x={pos.x} y={pos.y}
                 textAnchor="middle"
-                fontSize="10"
-                fill={isLagna ? '#f0d080' : 'rgba(201,168,76,0.5)'}
-                fontWeight={isLagna ? 'bold' : 'normal'}
+                fontSize="11"
+                fill={isLagna ? '#68020d' : '#9c5050'}
+                fontWeight={isLagna ? '700' : '400'}
               >
                 {isLagna ? 'As' : house}
               </text>
               {isLagna && (
-                <text x={pos.x} y={pos.y + 12} textAnchor="middle" fontSize="9" fill="#f0d080">
+                <text x={pos.x} y={pos.y + 13} textAnchor="middle" fontSize="10" fill="#68020d" fontWeight="600">
                   {data.lagna.sign.slice(0, 3)} {Math.floor(data.lagna.degree)}°
                 </text>
               )}
@@ -80,10 +86,11 @@ export default function KundliChart({ data, name }: Props) {
                 <text
                   key={planet.name}
                   x={pos.x}
-                  y={pos.y + (isLagna ? 24 : 13) + pi * 12}
+                  y={pos.y + (isLagna ? 26 : 14) + pi * 13}
                   textAnchor="middle"
-                  fontSize="9"
-                  fill="#e8d5a0"
+                  fontSize="10"
+                  fill="#3d1a0a"
+                  fontWeight="500"
                 >
                   {PLANET_ABBR[planet.name] ?? planet.name.slice(0, 2)}
                   {planet.retrograde && planet.name !== 'Rahu' && planet.name !== 'Ketu' ? '℞' : ''}
@@ -94,7 +101,6 @@ export default function KundliChart({ data, name }: Props) {
           )
         })}
       </svg>
-      <p className="text-[#c9a84c]/25 text-xs tracking-[6px]">✦ &nbsp; ✦ &nbsp; ✦</p>
     </div>
   )
 }
